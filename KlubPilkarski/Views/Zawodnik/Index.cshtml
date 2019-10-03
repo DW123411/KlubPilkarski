@@ -1,0 +1,78 @@
+﻿@model IEnumerable<KlubPilkarski.Models.Zawodnik>
+
+@{
+    ViewBag.Title = "Lista zawodników";
+}
+
+<h2>Lista zawodników</h2>
+
+<p align="right">
+    <button type="button" class="btn btn-primary add-button"
+            onclick="location.href='@Url.Action("Create", "Zawodnik")'"
+            data-toggle="tooltip" data-placement="top" title="Dodaj zawodnika">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Dodaj zawodnika
+    </button>
+</p>
+<table id="table" class="table">
+    <thead>
+        <tr>
+            <th>
+                Imię
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwisko)
+            </th>
+            <th>
+                Klub
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                Imię
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwisko)
+            </th>
+            <th>
+                Klub
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwisko)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Klub.Nazwa)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-sm edit-button"
+                            onclick="location.href='@Url.Action("Edit", "Zawodnik", new { id = item.IdZ })'"
+                            data-toggle="tooltip" data-placement="top" title="Edytuj zawodnika">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm"
+                            onclick="location.href='@Url.Action("Details", "Zawodnik", new { id = item.IdZ })'"
+                            data-toggle="tooltip" data-placement="top" title="Pokaż szczegółowe informacje">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm delete-button"
+                            onclick="location.href='@Url.Action("Delete", "Zawodnik", new { id = item.IdZ })'"
+                            data-toggle="tooltip" data-placement="top" title="Usuń zawodnika">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

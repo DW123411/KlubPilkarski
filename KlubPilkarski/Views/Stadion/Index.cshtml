@@ -1,0 +1,78 @@
+﻿@model IEnumerable<KlubPilkarski.Models.Stadion>
+
+@{
+    ViewBag.Title = "Lista stadionów";
+}
+
+<h2>Lista stadionów</h2>
+
+<p align="right">
+    <button type="button" class="btn btn-primary add-button"
+            onclick="location.href='@Url.Action("Create", "Stadion")'"
+            data-toggle="tooltip" data-placement="top" title="Dodaj stadion">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Dodaj stadion
+    </button>
+</p>
+<table id="table" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th>
+                Miejscowość
+            </th>
+            <th>
+                Pojemność
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th>
+                Miejscowość
+            </th>
+            <th>
+                Pojemność
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Miejscowosc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pojemnosc)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-sm edit-button"
+                            onclick="location.href='@Url.Action("Edit", "Stadion", new { id = item.IdStadion })'"
+                            data-toggle="tooltip" data-placement="top" title="Edytuj stadion">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm"
+                            onclick="location.href='@Url.Action("Details", "Stadion", new { id = item.IdStadion })'"
+                            data-toggle="tooltip" data-placement="top" title="Pokaż szczegółowe informacje">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm delete-button"
+                            onclick="location.href='@Url.Action("Delete", "Stadion", new { id = item.IdStadion })'"
+                            data-toggle="tooltip" data-placement="top" title="Usuń stadion">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+    
+</table>

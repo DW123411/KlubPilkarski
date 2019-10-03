@@ -1,0 +1,78 @@
+﻿@model IEnumerable<KlubPilkarski.Models.ZawodnikMecz>
+
+@{
+    ViewBag.Title = "Lista występów zawodników w meczach";
+}
+
+<h2>Lista występ zawodników w meczach</h2>
+
+<p align="right">
+    <button type="button" class="btn btn-primary add-button"
+            onclick="location.href='@Url.Action("Create", "ZawodnikMecz")'"
+            data-toggle="tooltip" data-placement="top" title="Dodaj występ zawodnika w meczu">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Dodaj występ zawodnika w meczu
+    </button>
+</p>
+<table id="table" class="table">
+    <thead>
+        <tr>
+            <th>
+                Zawodnik
+            </th>
+            <th>
+                Mecz
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pozycja)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                Zawodnik
+            </th>
+            <th>
+                Mecz
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pozycja)
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zawodnik.Imie) @Html.DisplayFor(modelItem => item.Zawodnik.Nazwisko)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mecz.Data) @Html.DisplayFor(modelItem => item.Mecz.Klub1.Nazwa) - @Html.DisplayFor(modelItem => item.Mecz.Klub.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pozycja)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-sm edit-button"
+                            onclick="location.href='@Url.Action("Edit", "ZawodnikMecz", new { id = item.IdZM })'"
+                            data-toggle="tooltip" data-placement="top" title="Edytuj występ zawodnika w meczu">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm"
+                            onclick="location.href='@Url.Action("Details", "ZawodnikMecz", new { id = item.IdZM })'"
+                            data-toggle="tooltip" data-placement="top" title="Pokaż szczegółowe informacje">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm delete-button"
+                            onclick="location.href='@Url.Action("Delete", "ZawodnikMecz", new { id = item.IdZM })'"
+                            data-toggle="tooltip" data-placement="top" title="Usuń występ zawodnika w meczu">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

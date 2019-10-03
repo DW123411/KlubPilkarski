@@ -1,0 +1,47 @@
+﻿@model KlubPilkarski.Models.Mecz
+
+@{
+    ViewBag.Title = "Usuń mecz";
+}
+
+<h2>Usuń mecz</h2>
+
+<h3>Czy jesteś pewien że chcesz usunąć ten element?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            Mecz
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Klub1.Nazwa) - @Html.DisplayFor(model => model.Klub.Nazwa)
+        </dd>
+
+        <dt>
+            Wynik
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BramkiGospodarze):@Html.DisplayFor(model => model.BramkiGoscie)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-danger delete-button" /> 
+            @Html.ActionLink("Powrót do listy meczy", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

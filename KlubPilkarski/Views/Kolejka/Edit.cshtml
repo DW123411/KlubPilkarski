@@ -1,0 +1,60 @@
+﻿@model KlubPilkarski.Models.Kolejka
+
+@{
+    ViewBag.Title = "Edytuj informacje o kolejce";
+}
+
+<h2>Edytuj informacje o kolejce</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IdKolejka)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nr, "Numer kolejki", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nr, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nr, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataOd, "Data rozpoczęcia", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataOd, new { htmlAttributes = new { @class = "form-control datepickerfield" } })
+                @Html.ValidationMessageFor(model => model.DataOd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataDo, "Data zakończenia", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataDo, new { htmlAttributes = new { @class = "form-control datepickerfield" } })
+                @Html.ValidationMessageFor(model => model.DataDo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Zapisz" class="btn btn-success" />
+                @Html.ActionLink("Powrót do listy kolejek", "Index", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+        $(function () {
+            $('.datepickerfield').datepicker({ dateFormat: 'yy-mm-dd' });
+        });
+    </script>
+}

@@ -1,0 +1,89 @@
+﻿@model KlubPilkarski.Models.Mecz
+
+@{
+    ViewBag.Title = "Informacje o meczu";
+}
+
+<h2>Informacje o meczu</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            Mecz
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Klub1.Nazwa) - @Html.DisplayFor(model => model.Klub.Nazwa)
+        </dd>
+
+        <dt>
+            Wynik
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BramkiGospodarze):@Html.DisplayFor(model => model.BramkiGoscie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kibice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kibice)
+        </dd>
+
+        <dt>
+            Numer kolejki
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kolejka.Nr)
+        </dd>
+
+        <dt>
+            Sędzia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sedzia.Imie) @Html.DisplayFor(model => model.Sedzia.Nazwisko)
+        </dd>
+
+        <dt>
+            Sezon
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sezon.RokOd)/@Html.DisplayFor(model => model.Sezon.RokDo)
+        </dd>
+
+        <dt>
+            Stadion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stadion.Nazwa) - @Html.DisplayFor(model => model.Stadion.Miejscowosc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.IdM }, new { @class = "btn btn-warning edit-button" })
+    @Html.ActionLink("Powrót do listy meczy", "Index", null, new { @class = "btn btn-primary" })
+</p>

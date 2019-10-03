@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BazaDanychModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Klub">
+          <Key>
+            <PropertyRef Name="IdK" />
+          </Key>
+          <Property Name="IdK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Siedziba" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="Opis" Type="varchar" MaxLength="150" />
+          <Property Name="IdT" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kolejka">
+          <Key>
+            <PropertyRef Name="IdKolejka" />
+          </Key>
+          <Property Name="IdKolejka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nr" Type="int" Nullable="false" />
+          <Property Name="DataOd" Type="date" Nullable="false" />
+          <Property Name="DataDo" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mecz">
+          <Key>
+            <PropertyRef Name="IdM" />
+          </Key>
+          <Property Name="IdM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdS" Type="int" Nullable="false" />
+          <Property Name="IdKolejka" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="IdStadion" Type="int" Nullable="false" />
+          <Property Name="IdKlubGospodarze" Type="int" Nullable="false" />
+          <Property Name="IdKlubGoscie" Type="int" Nullable="false" />
+          <Property Name="BramkiGospodarze" Type="int" Nullable="false" />
+          <Property Name="BramkiGoscie" Type="int" Nullable="false" />
+          <Property Name="PunktyGospodarze" Type="int" Nullable="false" />
+          <Property Name="PunktyGoscie" Type="int" Nullable="false" />
+          <Property Name="FormaGospodarze" Type="int" Nullable="false" />
+          <Property Name="FormaGoscie" Type="int" Nullable="false" />
+          <Property Name="Opis" Type="varchar" MaxLength="150" />
+          <Property Name="IdSedzia" Type="int" Nullable="false" />
+          <Property Name="Kibice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sedzia">
+          <Key>
+            <PropertyRef Name="IdSedzia" />
+          </Key>
+          <Property Name="IdSedzia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sezon">
+          <Key>
+            <PropertyRef Name="IdS" />
+          </Key>
+          <Property Name="IdS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RokOd" Type="int" Nullable="false" />
+          <Property Name="RokDo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stadion">
+          <Key>
+            <PropertyRef Name="IdStadion" />
+          </Key>
+          <Property Name="IdStadion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="Miejscowosc" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Pojemnosc" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trener">
+          <Key>
+            <PropertyRef Name="IdT" />
+          </Key>
+          <Property Name="IdT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zawodnik">
+          <Key>
+            <PropertyRef Name="IdZ" />
+          </Key>
+          <Property Name="IdZ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdK" Type="int" Nullable="false" />
+          <Property Name="Opis" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="ZawodnikMecz">
+          <Key>
+            <PropertyRef Name="IdZM" />
+          </Key>
+          <Property Name="IdZM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdM" Type="int" Nullable="false" />
+          <Property Name="IdZ" Type="int" Nullable="false" />
+          <Property Name="Pozycja" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="MinutyOd" Type="int" Nullable="false" />
+          <Property Name="MinutyDo" Type="int" Nullable="false" />
+          <Property Name="Bramki" Type="int" Nullable="false" />
+          <Property Name="Asysty" Type="int" Nullable="false" />
+          <Property Name="UtworzoneSzanse" Type="int" Nullable="false" />
+          <Property Name="StrzalyCelne" Type="int" Nullable="false" />
+          <Property Name="StrzalyNiecelne" Type="int" Nullable="false" />
+          <Property Name="StrzalyZablokowane" Type="int" Nullable="false" />
+          <Property Name="SlupkiPoprzeczki" Type="int" Nullable="false" />
+          <Property Name="KartkiZolte" Type="int" Nullable="false" />
+          <Property Name="KartkiCzerwone" Type="int" Nullable="false" />
+          <Property Name="PodaniaUdanePolowaWlasna" Type="int" Nullable="false" />
+          <Property Name="PodaniaUdanePolowaPrzeciwnika" Type="int" Nullable="false" />
+          <Property Name="PodaniaNieudanePolowaWlasna" Type="int" Nullable="false" />
+          <Property Name="PodaniaNieudanePolowaPrzeciwnika" Type="int" Nullable="false" />
+          <Property Name="Dosrodkowania" Type="int" Nullable="false" />
+          <Property Name="DlugiePodaniaUdane" Type="int" Nullable="false" />
+          <Property Name="DlugiePodaniaNieudane" Type="int" Nullable="false" />
+          <Property Name="KluczowePodania" Type="int" Nullable="false" />
+          <Property Name="Kontakty" Type="int" Nullable="false" />
+          <Property Name="RzutyRozne" Type="int" Nullable="false" />
+          <Property Name="Wyrzuty" Type="int" Nullable="false" />
+          <Property Name="PojedynkiWygrane" Type="int" Nullable="false" />
+          <Property Name="PojedynkiPrzegrane" Type="int" Nullable="false" />
+          <Property Name="Wybicia" Type="int" Nullable="false" />
+          <Property Name="DryblingiUdane" Type="int" Nullable="false" />
+          <Property Name="Straty" Type="int" Nullable="false" />
+          <Property Name="Faulowany" Type="int" Nullable="false" />
+          <Property Name="Faule" Type="int" Nullable="false" />
+          <Property Name="OdbioryUdane" Type="int" Nullable="false" />
+          <Property Name="OdbioryNieudane" Type="int" Nullable="false" />
+          <Property Name="GlowkiWygrane" Type="int" Nullable="false" />
+          <Property Name="GlowkiPrzegrane" Type="int" Nullable="false" />
+          <Property Name="Przejecia" Type="int" Nullable="false" />
+          <Property Name="Spalone" Type="int" Nullable="false" />
+          <Property Name="OdzyskanePilki" Type="int" Nullable="false" />
+          <Property Name="Forma" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Klub_Trener">
+          <End Role="Trener" Type="Self.Trener" Multiplicity="1" />
+          <End Role="Klub" Type="Self.Klub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trener">
+              <PropertyRef Name="IdT" />
+            </Principal>
+            <Dependent Role="Klub">
+              <PropertyRef Name="IdT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_KlubGosc">
+          <End Role="Klub" Type="Self.Klub" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="IdK" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdKlubGoscie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_KlubGosp">
+          <End Role="Klub" Type="Self.Klub" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="IdK" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdKlubGospodarze" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_Kolejka">
+          <End Role="Kolejka" Type="Self.Kolejka" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kolejka">
+              <PropertyRef Name="IdKolejka" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdKolejka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_Sedzia">
+          <End Role="Sedzia" Type="Self.Sedzia" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sedzia">
+              <PropertyRef Name="IdSedzia" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdSedzia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_Sezon">
+          <End Role="Sezon" Type="Self.Sezon" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sezon">
+              <PropertyRef Name="IdS" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_Stadion">
+          <End Role="Stadion" Type="Self.Stadion" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stadion">
+              <PropertyRef Name="IdStadion" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdStadion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zawodnik_Klub">
+          <End Role="Klub" Type="Self.Klub" Multiplicity="1" />
+          <End Role="Zawodnik" Type="Self.Zawodnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="IdK" />
+            </Principal>
+            <Dependent Role="Zawodnik">
+              <PropertyRef Name="IdK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZawodnikMecz_Mecz">
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="1" />
+          <End Role="ZawodnikMecz" Type="Self.ZawodnikMecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mecz">
+              <PropertyRef Name="IdM" />
+            </Principal>
+            <Dependent Role="ZawodnikMecz">
+              <PropertyRef Name="IdM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZawodnikMecz_Zawodnik">
+          <End Role="Zawodnik" Type="Self.Zawodnik" Multiplicity="1" />
+          <End Role="ZawodnikMecz" Type="Self.ZawodnikMecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zawodnik">
+              <PropertyRef Name="IdZ" />
+            </Principal>
+            <Dependent Role="ZawodnikMecz">
+              <PropertyRef Name="IdZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="TabelaLigowaSezon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WybranySezon" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ZawodnikStatystyki" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WybranyZawodnik" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="BazaDanychModelStoreContainer">
+          <EntitySet Name="Klub" EntityType="Self.Klub" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kolejka" EntityType="Self.Kolejka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mecz" EntityType="Self.Mecz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sedzia" EntityType="Self.Sedzia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sezon" EntityType="Self.Sezon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stadion" EntityType="Self.Stadion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trener" EntityType="Self.Trener" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zawodnik" EntityType="Self.Zawodnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZawodnikMecz" EntityType="Self.ZawodnikMecz" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Klub_Trener" Association="Self.FK_Klub_Trener">
+            <End Role="Trener" EntitySet="Trener" />
+            <End Role="Klub" EntitySet="Klub" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_KlubGosc" Association="Self.FK_Mecz_KlubGosc">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_KlubGosp" Association="Self.FK_Mecz_KlubGosp">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_Kolejka" Association="Self.FK_Mecz_Kolejka">
+            <End Role="Kolejka" EntitySet="Kolejka" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_Sedzia" Association="Self.FK_Mecz_Sedzia">
+            <End Role="Sedzia" EntitySet="Sedzia" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_Sezon" Association="Self.FK_Mecz_Sezon">
+            <End Role="Sezon" EntitySet="Sezon" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_Stadion" Association="Self.FK_Mecz_Stadion">
+            <End Role="Stadion" EntitySet="Stadion" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zawodnik_Klub" Association="Self.FK_Zawodnik_Klub">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Zawodnik" EntitySet="Zawodnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZawodnikMecz_Mecz" Association="Self.FK_ZawodnikMecz_Mecz">
+            <End Role="Mecz" EntitySet="Mecz" />
+            <End Role="ZawodnikMecz" EntitySet="ZawodnikMecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZawodnikMecz_Zawodnik" Association="Self.FK_ZawodnikMecz_Zawodnik">
+            <End Role="Zawodnik" EntitySet="Zawodnik" />
+            <End Role="ZawodnikMecz" EntitySet="ZawodnikMecz" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BazaDanychModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Klub">
+          <Key>
+            <PropertyRef Name="IdK" />
+          </Key>
+          <Property Name="IdK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Siedziba" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="90" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="IdT" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Trener" Relationship="Self.FK_Klub_Trener" FromRole="Klub" ToRole="Trener" />
+          <NavigationProperty Name="Mecz" Relationship="Self.FK_Mecz_KlubGosc" FromRole="Klub" ToRole="Mecz" />
+          <NavigationProperty Name="Mecz1" Relationship="Self.FK_Mecz_KlubGosp" FromRole="Klub" ToRole="Mecz" />
+          <NavigationProperty Name="Zawodnik" Relationship="Self.FK_Zawodnik_Klub" FromRole="Klub" ToRole="Zawodnik" />
+        </EntityType>
+        <EntityType Name="Kolejka">
+          <Key>
+            <PropertyRef Name="IdKolejka" />
+          </Key>
+          <Property Name="IdKolejka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nr" Type="Int32" Nullable="false" />
+          <Property Name="DataOd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataDo" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Mecz" Relationship="Self.FK_Mecz_Kolejka" FromRole="Kolejka" ToRole="Mecz" />
+        </EntityType>
+        <EntityType Name="Mecz">
+          <Key>
+            <PropertyRef Name="IdM" />
+          </Key>
+          <Property Name="IdM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdS" Type="Int32" Nullable="false" />
+          <Property Name="IdKolejka" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdStadion" Type="Int32" Nullable="false" />
+          <Property Name="IdKlubGospodarze" Type="Int32" Nullable="false" />
+          <Property Name="IdKlubGoscie" Type="Int32" Nullable="false" />
+          <Property Name="BramkiGospodarze" Type="Int32" Nullable="false" />
+          <Property Name="BramkiGoscie" Type="Int32" Nullable="false" />
+          <Property Name="PunktyGospodarze" Type="Int32" Nullable="false" />
+          <Property Name="PunktyGoscie" Type="Int32" Nullable="false" />
+          <Property Name="FormaGospodarze" Type="Int32" Nullable="false" />
+          <Property Name="FormaGoscie" Type="Int32" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="IdSedzia" Type="Int32" Nullable="false" />
+          <Property Name="Kibice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Klub" Relationship="Self.FK_Mecz_KlubGosc" FromRole="Mecz" ToRole="Klub" />
+          <NavigationProperty Name="Klub1" Relationship="Self.FK_Mecz_KlubGosp" FromRole="Mecz" ToRole="Klub" />
+          <NavigationProperty Name="Kolejka" Relationship="Self.FK_Mecz_Kolejka" FromRole="Mecz" ToRole="Kolejka" />
+          <NavigationProperty Name="Sedzia" Relationship="Self.FK_Mecz_Sedzia" FromRole="Mecz" ToRole="Sedzia" />
+          <NavigationProperty Name="Sezon" Relationship="Self.FK_Mecz_Sezon" FromRole="Mecz" ToRole="Sezon" />
+          <NavigationProperty Name="Stadion" Relationship="Self.FK_Mecz_Stadion" FromRole="Mecz" ToRole="Stadion" />
+          <NavigationProperty Name="ZawodnikMecz" Relationship="Self.FK_ZawodnikMecz_Mecz" FromRole="Mecz" ToRole="ZawodnikMecz" />
+        </EntityType>
+        <EntityType Name="Sedzia">
+          <Key>
+            <PropertyRef Name="IdSedzia" />
+          </Key>
+          <Property Name="IdSedzia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Mecz" Relationship="Self.FK_Mecz_Sedzia" FromRole="Sedzia" ToRole="Mecz" />
+        </EntityType>
+        <EntityType Name="Sezon">
+          <Key>
+            <PropertyRef Name="IdS" />
+          </Key>
+          <Property Name="IdS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RokOd" Type="Int32" Nullable="false" />
+          <Property Name="RokDo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Mecz" Relationship="Self.FK_Mecz_Sezon" FromRole="Sezon" ToRole="Mecz" />
+        </EntityType>
+        <EntityType Name="Stadion">
+          <Key>
+            <PropertyRef Name="IdStadion" />
+          </Key>
+          <Property Name="IdStadion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="90" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Miejscowosc" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pojemnosc" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Mecz" Relationship="Self.FK_Mecz_Stadion" FromRole="Stadion" ToRole="Mecz" />
+        </EntityType>
+        <EntityType Name="Trener">
+          <Key>
+            <PropertyRef Name="IdT" />
+          </Key>
+          <Property Name="IdT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Klub" Relationship="Self.FK_Klub_Trener" FromRole="Trener" ToRole="Klub" />
+        </EntityType>
+        <EntityType Name="Zawodnik">
+          <Key>
+            <PropertyRef Name="IdZ" />
+          </Key>
+          <Property Name="IdZ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdK" Type="Int32" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Klub" Relationship="Self.FK_Zawodnik_Klub" FromRole="Zawodnik" ToRole="Klub" />
+          <NavigationProperty Name="ZawodnikMecz" Relationship="Self.FK_ZawodnikMecz_Zawodnik" FromRole="Zawodnik" ToRole="ZawodnikMecz" />
+        </EntityType>
+        <EntityType Name="ZawodnikMecz">
+          <Key>
+            <PropertyRef Name="IdZM" />
+          </Key>
+          <Property Name="IdZM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdM" Type="Int32" Nullable="false" />
+          <Property Name="IdZ" Type="Int32" Nullable="false" />
+          <Property Name="Pozycja" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MinutyOd" Type="Int32" Nullable="false" />
+          <Property Name="MinutyDo" Type="Int32" Nullable="false" />
+          <Property Name="Bramki" Type="Int32" Nullable="false" />
+          <Property Name="Asysty" Type="Int32" Nullable="false" />
+          <Property Name="UtworzoneSzanse" Type="Int32" Nullable="false" />
+          <Property Name="StrzalyCelne" Type="Int32" Nullable="false" />
+          <Property Name="StrzalyNiecelne" Type="Int32" Nullable="false" />
+          <Property Name="StrzalyZablokowane" Type="Int32" Nullable="false" />
+          <Property Name="SlupkiPoprzeczki" Type="Int32" Nullable="false" />
+          <Property Name="KartkiZolte" Type="Int32" Nullable="false" />
+          <Property Name="KartkiCzerwone" Type="Int32" Nullable="false" />
+          <Property Name="PodaniaUdanePolowaWlasna" Type="Int32" Nullable="false" />
+          <Property Name="PodaniaUdanePolowaPrzeciwnika" Type="Int32" Nullable="false" />
+          <Property Name="PodaniaNieudanePolowaWlasna" Type="Int32" Nullable="false" />
+          <Property Name="PodaniaNieudanePolowaPrzeciwnika" Type="Int32" Nullable="false" />
+          <Property Name="Dosrodkowania" Type="Int32" Nullable="false" />
+          <Property Name="DlugiePodaniaUdane" Type="Int32" Nullable="false" />
+          <Property Name="DlugiePodaniaNieudane" Type="Int32" Nullable="false" />
+          <Property Name="KluczowePodania" Type="Int32" Nullable="false" />
+          <Property Name="Kontakty" Type="Int32" Nullable="false" />
+          <Property Name="RzutyRozne" Type="Int32" Nullable="false" />
+          <Property Name="Wyrzuty" Type="Int32" Nullable="false" />
+          <Property Name="PojedynkiWygrane" Type="Int32" Nullable="false" />
+          <Property Name="PojedynkiPrzegrane" Type="Int32" Nullable="false" />
+          <Property Name="Wybicia" Type="Int32" Nullable="false" />
+          <Property Name="DryblingiUdane" Type="Int32" Nullable="false" />
+          <Property Name="Straty" Type="Int32" Nullable="false" />
+          <Property Name="Faulowany" Type="Int32" Nullable="false" />
+          <Property Name="Faule" Type="Int32" Nullable="false" />
+          <Property Name="OdbioryUdane" Type="Int32" Nullable="false" />
+          <Property Name="OdbioryNieudane" Type="Int32" Nullable="false" />
+          <Property Name="GlowkiWygrane" Type="Int32" Nullable="false" />
+          <Property Name="GlowkiPrzegrane" Type="Int32" Nullable="false" />
+          <Property Name="Przejecia" Type="Int32" Nullable="false" />
+          <Property Name="Spalone" Type="Int32" Nullable="false" />
+          <Property Name="OdzyskanePilki" Type="Int32" Nullable="false" />
+          <Property Name="Forma" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Mecz" Relationship="Self.FK_ZawodnikMecz_Mecz" FromRole="ZawodnikMecz" ToRole="Mecz" />
+          <NavigationProperty Name="Zawodnik" Relationship="Self.FK_ZawodnikMecz_Zawodnik" FromRole="ZawodnikMecz" ToRole="Zawodnik" />
+        </EntityType>
+        <Association Name="FK_Klub_Trener">
+          <End Role="Trener" Type="Self.Trener" Multiplicity="1" />
+          <End Role="Klub" Type="Self.Klub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trener">
+              <PropertyRef Name="IdT" />
+            </Principal>
+            <Dependent Role="Klub">
+              <PropertyRef Name="IdT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_KlubGosc">
+          <End Role="Klub" Type="Self.Klub" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="IdK" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdKlubGoscie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_KlubGosp">
+          <End Role="Klub" Type="Self.Klub" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="IdK" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdKlubGospodarze" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zawodnik_Klub">
+          <End Role="Klub" Type="Self.Klub" Multiplicity="1" />
+          <End Role="Zawodnik" Type="Self.Zawodnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="IdK" />
+            </Principal>
+            <Dependent Role="Zawodnik">
+              <PropertyRef Name="IdK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_Kolejka">
+          <End Role="Kolejka" Type="Self.Kolejka" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kolejka">
+              <PropertyRef Name="IdKolejka" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdKolejka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_Sedzia">
+          <End Role="Sedzia" Type="Self.Sedzia" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sedzia">
+              <PropertyRef Name="IdSedzia" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdSedzia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_Sezon">
+          <End Role="Sezon" Type="Self.Sezon" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sezon">
+              <PropertyRef Name="IdS" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mecz_Stadion">
+          <End Role="Stadion" Type="Self.Stadion" Multiplicity="1" />
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stadion">
+              <PropertyRef Name="IdStadion" />
+            </Principal>
+            <Dependent Role="Mecz">
+              <PropertyRef Name="IdStadion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZawodnikMecz_Mecz">
+          <End Role="Mecz" Type="Self.Mecz" Multiplicity="1" />
+          <End Role="ZawodnikMecz" Type="Self.ZawodnikMecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mecz">
+              <PropertyRef Name="IdM" />
+            </Principal>
+            <Dependent Role="ZawodnikMecz">
+              <PropertyRef Name="IdM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZawodnikMecz_Zawodnik">
+          <End Role="Zawodnik" Type="Self.Zawodnik" Multiplicity="1" />
+          <End Role="ZawodnikMecz" Type="Self.ZawodnikMecz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zawodnik">
+              <PropertyRef Name="IdZ" />
+            </Principal>
+            <Dependent Role="ZawodnikMecz">
+              <PropertyRef Name="IdZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BazaDanychEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Klub" EntityType="Self.Klub" />
+          <EntitySet Name="Kolejka" EntityType="Self.Kolejka" />
+          <EntitySet Name="Mecz" EntityType="Self.Mecz" />
+          <EntitySet Name="Sedzia" EntityType="Self.Sedzia" />
+          <EntitySet Name="Sezon" EntityType="Self.Sezon" />
+          <EntitySet Name="Stadion" EntityType="Self.Stadion" />
+          <EntitySet Name="Trener" EntityType="Self.Trener" />
+          <EntitySet Name="Zawodnik" EntityType="Self.Zawodnik" />
+          <EntitySet Name="ZawodnikMecz" EntityType="Self.ZawodnikMecz" />
+          <AssociationSet Name="FK_Klub_Trener" Association="Self.FK_Klub_Trener">
+            <End Role="Trener" EntitySet="Trener" />
+            <End Role="Klub" EntitySet="Klub" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_KlubGosc" Association="Self.FK_Mecz_KlubGosc">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_KlubGosp" Association="Self.FK_Mecz_KlubGosp">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zawodnik_Klub" Association="Self.FK_Zawodnik_Klub">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Zawodnik" EntitySet="Zawodnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_Kolejka" Association="Self.FK_Mecz_Kolejka">
+            <End Role="Kolejka" EntitySet="Kolejka" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_Sedzia" Association="Self.FK_Mecz_Sedzia">
+            <End Role="Sedzia" EntitySet="Sedzia" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_Sezon" Association="Self.FK_Mecz_Sezon">
+            <End Role="Sezon" EntitySet="Sezon" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mecz_Stadion" Association="Self.FK_Mecz_Stadion">
+            <End Role="Stadion" EntitySet="Stadion" />
+            <End Role="Mecz" EntitySet="Mecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZawodnikMecz_Mecz" Association="Self.FK_ZawodnikMecz_Mecz">
+            <End Role="Mecz" EntitySet="Mecz" />
+            <End Role="ZawodnikMecz" EntitySet="ZawodnikMecz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZawodnikMecz_Zawodnik" Association="Self.FK_ZawodnikMecz_Zawodnik">
+            <End Role="Zawodnik" EntitySet="Zawodnik" />
+            <End Role="ZawodnikMecz" EntitySet="ZawodnikMecz" />
+          </AssociationSet>
+          <FunctionImport Name="TabelaLigowaSezon" ReturnType="Collection(BazaDanychModel.TabelaLigowaSezon_Result)">
+            <Parameter Name="WybranySezon" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ZawodnikStatystyki" ReturnType="Collection(BazaDanychModel.ZawodnikStatystyki_Result)">
+            <Parameter Name="WybranyZawodnik" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="TabelaLigowaSezon_Result">
+          <Property Type="String" Name="Klub" Nullable="false" MaxLength="90" />
+          <Property Type="Int32" Name="Punkty" Nullable="true" />
+          <Property Type="Int32" Name="BramkiZdobyte" Nullable="true" />
+          <Property Type="Int32" Name="BramkiStracone" Nullable="true" />
+          <Property Type="Int32" Name="BilansBramkowy" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ZawodnikStatystyki_Result">
+          <Property Type="String" Name="Imie" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Nazwisko" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Klub" Nullable="false" MaxLength="90" />
+          <Property Type="Int32" Name="SumaBramek" Nullable="true" />
+          <Property Type="Int32" Name="SumaAsyst" Nullable="true" />
+          <Property Type="Int32" Name="SumaPodanUdanychPolowaWlasna" Nullable="true" />
+          <Property Type="Int32" Name="SumaPodanUdanychPolowaPrzeciwnika" Nullable="true" />
+          <Property Type="Int32" Name="SumaPodanNieudanychPolowaWlasna" Nullable="true" />
+          <Property Type="Int32" Name="SumaPodanNieudanychPolowaPrzeciwnika" Nullable="true" />
+          <Property Type="Int32" Name="SumaKartekZoltych" Nullable="true" />
+          <Property Type="Int32" Name="SumaKartekCzerwonych" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BazaDanychModelStoreContainer" CdmEntityContainer="BazaDanychEntities">
+          <EntitySetMapping Name="Klub">
+            <EntityTypeMapping TypeName="BazaDanychModel.Klub">
+              <MappingFragment StoreEntitySet="Klub">
+                <ScalarProperty Name="IdK" ColumnName="IdK" />
+                <ScalarProperty Name="Siedziba" ColumnName="Siedziba" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="IdT" ColumnName="IdT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kolejka">
+            <EntityTypeMapping TypeName="BazaDanychModel.Kolejka">
+              <MappingFragment StoreEntitySet="Kolejka">
+                <ScalarProperty Name="IdKolejka" ColumnName="IdKolejka" />
+                <ScalarProperty Name="Nr" ColumnName="Nr" />
+                <ScalarProperty Name="DataOd" ColumnName="DataOd" />
+                <ScalarProperty Name="DataDo" ColumnName="DataDo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mecz">
+            <EntityTypeMapping TypeName="BazaDanychModel.Mecz">
+              <MappingFragment StoreEntitySet="Mecz">
+                <ScalarProperty Name="IdM" ColumnName="IdM" />
+                <ScalarProperty Name="IdS" ColumnName="IdS" />
+                <ScalarProperty Name="IdKolejka" ColumnName="IdKolejka" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="IdStadion" ColumnName="IdStadion" />
+                <ScalarProperty Name="IdKlubGospodarze" ColumnName="IdKlubGospodarze" />
+                <ScalarProperty Name="IdKlubGoscie" ColumnName="IdKlubGoscie" />
+                <ScalarProperty Name="BramkiGospodarze" ColumnName="BramkiGospodarze" />
+                <ScalarProperty Name="BramkiGoscie" ColumnName="BramkiGoscie" />
+                <ScalarProperty Name="PunktyGospodarze" ColumnName="PunktyGospodarze" />
+                <ScalarProperty Name="PunktyGoscie" ColumnName="PunktyGoscie" />
+                <ScalarProperty Name="FormaGospodarze" ColumnName="FormaGospodarze" />
+                <ScalarProperty Name="FormaGoscie" ColumnName="FormaGoscie" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="IdSedzia" ColumnName="IdSedzia" />
+                <ScalarProperty Name="Kibice" ColumnName="Kibice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sedzia">
+            <EntityTypeMapping TypeName="BazaDanychModel.Sedzia">
+              <MappingFragment StoreEntitySet="Sedzia">
+                <ScalarProperty Name="IdSedzia" ColumnName="IdSedzia" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sezon">
+            <EntityTypeMapping TypeName="BazaDanychModel.Sezon">
+              <MappingFragment StoreEntitySet="Sezon">
+                <ScalarProperty Name="IdS" ColumnName="IdS" />
+                <ScalarProperty Name="RokOd" ColumnName="RokOd" />
+                <ScalarProperty Name="RokDo" ColumnName="RokDo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stadion">
+            <EntityTypeMapping TypeName="BazaDanychModel.Stadion">
+              <MappingFragment StoreEntitySet="Stadion">
+                <ScalarProperty Name="IdStadion" ColumnName="IdStadion" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Miejscowosc" ColumnName="Miejscowosc" />
+                <ScalarProperty Name="Pojemnosc" ColumnName="Pojemnosc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trener">
+            <EntityTypeMapping TypeName="BazaDanychModel.Trener">
+              <MappingFragment StoreEntitySet="Trener">
+                <ScalarProperty Name="IdT" ColumnName="IdT" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zawodnik">
+            <EntityTypeMapping TypeName="BazaDanychModel.Zawodnik">
+              <MappingFragment StoreEntitySet="Zawodnik">
+                <ScalarProperty Name="IdZ" ColumnName="IdZ" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="IdK" ColumnName="IdK" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZawodnikMecz">
+            <EntityTypeMapping TypeName="BazaDanychModel.ZawodnikMecz">
+              <MappingFragment StoreEntitySet="ZawodnikMecz">
+                <ScalarProperty Name="IdZM" ColumnName="IdZM" />
+                <ScalarProperty Name="IdM" ColumnName="IdM" />
+                <ScalarProperty Name="IdZ" ColumnName="IdZ" />
+                <ScalarProperty Name="Pozycja" ColumnName="Pozycja" />
+                <ScalarProperty Name="MinutyOd" ColumnName="MinutyOd" />
+                <ScalarProperty Name="MinutyDo" ColumnName="MinutyDo" />
+                <ScalarProperty Name="Bramki" ColumnName="Bramki" />
+                <ScalarProperty Name="Asysty" ColumnName="Asysty" />
+                <ScalarProperty Name="UtworzoneSzanse" ColumnName="UtworzoneSzanse" />
+                <ScalarProperty Name="StrzalyCelne" ColumnName="StrzalyCelne" />
+                <ScalarProperty Name="StrzalyNiecelne" ColumnName="StrzalyNiecelne" />
+                <ScalarProperty Name="StrzalyZablokowane" ColumnName="StrzalyZablokowane" />
+                <ScalarProperty Name="SlupkiPoprzeczki" ColumnName="SlupkiPoprzeczki" />
+                <ScalarProperty Name="KartkiZolte" ColumnName="KartkiZolte" />
+                <ScalarProperty Name="KartkiCzerwone" ColumnName="KartkiCzerwone" />
+                <ScalarProperty Name="PodaniaUdanePolowaWlasna" ColumnName="PodaniaUdanePolowaWlasna" />
+                <ScalarProperty Name="PodaniaUdanePolowaPrzeciwnika" ColumnName="PodaniaUdanePolowaPrzeciwnika" />
+                <ScalarProperty Name="PodaniaNieudanePolowaWlasna" ColumnName="PodaniaNieudanePolowaWlasna" />
+                <ScalarProperty Name="PodaniaNieudanePolowaPrzeciwnika" ColumnName="PodaniaNieudanePolowaPrzeciwnika" />
+                <ScalarProperty Name="Dosrodkowania" ColumnName="Dosrodkowania" />
+                <ScalarProperty Name="DlugiePodaniaUdane" ColumnName="DlugiePodaniaUdane" />
+                <ScalarProperty Name="DlugiePodaniaNieudane" ColumnName="DlugiePodaniaNieudane" />
+                <ScalarProperty Name="KluczowePodania" ColumnName="KluczowePodania" />
+                <ScalarProperty Name="Kontakty" ColumnName="Kontakty" />
+                <ScalarProperty Name="RzutyRozne" ColumnName="RzutyRozne" />
+                <ScalarProperty Name="Wyrzuty" ColumnName="Wyrzuty" />
+                <ScalarProperty Name="PojedynkiWygrane" ColumnName="PojedynkiWygrane" />
+                <ScalarProperty Name="PojedynkiPrzegrane" ColumnName="PojedynkiPrzegrane" />
+                <ScalarProperty Name="Wybicia" ColumnName="Wybicia" />
+                <ScalarProperty Name="DryblingiUdane" ColumnName="DryblingiUdane" />
+                <ScalarProperty Name="Straty" ColumnName="Straty" />
+                <ScalarProperty Name="Faulowany" ColumnName="Faulowany" />
+                <ScalarProperty Name="Faule" ColumnName="Faule" />
+                <ScalarProperty Name="OdbioryUdane" ColumnName="OdbioryUdane" />
+                <ScalarProperty Name="OdbioryNieudane" ColumnName="OdbioryNieudane" />
+                <ScalarProperty Name="GlowkiWygrane" ColumnName="GlowkiWygrane" />
+                <ScalarProperty Name="GlowkiPrzegrane" ColumnName="GlowkiPrzegrane" />
+                <ScalarProperty Name="Przejecia" ColumnName="Przejecia" />
+                <ScalarProperty Name="Spalone" ColumnName="Spalone" />
+                <ScalarProperty Name="OdzyskanePilki" ColumnName="OdzyskanePilki" />
+                <ScalarProperty Name="Forma" ColumnName="Forma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="TabelaLigowaSezon" FunctionName="BazaDanychModel.Store.TabelaLigowaSezon">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BazaDanychModel.TabelaLigowaSezon_Result">
+                <ScalarProperty Name="Klub" ColumnName="Klub" />
+                <ScalarProperty Name="Punkty" ColumnName="Punkty" />
+                <ScalarProperty Name="BramkiZdobyte" ColumnName="BramkiZdobyte" />
+                <ScalarProperty Name="BramkiStracone" ColumnName="BramkiStracone" />
+                <ScalarProperty Name="BilansBramkowy" ColumnName="BilansBramkowy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ZawodnikStatystyki" FunctionName="BazaDanychModel.Store.ZawodnikStatystyki">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BazaDanychModel.ZawodnikStatystyki_Result">
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Klub" ColumnName="Klub" />
+                <ScalarProperty Name="SumaBramek" ColumnName="SumaBramek" />
+                <ScalarProperty Name="SumaAsyst" ColumnName="SumaAsyst" />
+                <ScalarProperty Name="SumaPodanUdanychPolowaWlasna" ColumnName="SumaPodanUdanychPolowaWlasna" />
+                <ScalarProperty Name="SumaPodanUdanychPolowaPrzeciwnika" ColumnName="SumaPodanUdanychPolowaPrzeciwnika" />
+                <ScalarProperty Name="SumaPodanNieudanychPolowaWlasna" ColumnName="SumaPodanNieudanychPolowaWlasna" />
+                <ScalarProperty Name="SumaPodanNieudanychPolowaPrzeciwnika" ColumnName="SumaPodanNieudanychPolowaPrzeciwnika" />
+                <ScalarProperty Name="SumaKartekZoltych" ColumnName="SumaKartekZoltych" />
+                <ScalarProperty Name="SumaKartekCzerwonych" ColumnName="SumaKartekCzerwonych" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

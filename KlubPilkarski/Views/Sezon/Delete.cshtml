@@ -1,0 +1,31 @@
+﻿@model KlubPilkarski.Models.Sezon
+
+@{
+    ViewBag.Title = "Usuń sezon";
+}
+
+<h2>Usuń sezon</h2>
+
+<h3>Czy jesteś pewien że chcesz usunąć ten element?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Sezon
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RokOd)/@Html.DisplayFor(model => model.RokDo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-danger delete-button" /> 
+            @Html.ActionLink("Powrót do listy sezonów", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

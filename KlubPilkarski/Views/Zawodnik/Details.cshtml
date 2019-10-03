@@ -1,0 +1,49 @@
+﻿@model KlubPilkarski.Models.Zawodnik
+
+@{
+    ViewBag.Title = "Informacje o zawodniku";
+}
+
+<h2>Informacje o zawodniku</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Imię
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+        <dt>
+            Klub
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Klub.Nazwa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.IdZ }, new { @class = "btn btn-warning edit-button" })
+    @Html.ActionLink("Powrót do listy zawodników", "Index", null, new { @class = "btn btn-primary" })
+</p>

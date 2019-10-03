@@ -1,0 +1,39 @@
+﻿@model KlubPilkarski.Models.Kolejka
+
+@{
+    ViewBag.Title = "Usuń kolejkę";
+}
+
+<h2>Usuń kolejkę</h2>
+
+<h3>Czy jesteś pewien że chcesz usunąć ten element?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Numer kolejki
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nr)
+        </dd>
+
+        <dt>
+            Data rozpoczęcia i zakończenia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataOd) - @Html.DisplayFor(model => model.DataDo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-danger delete-button" /> 
+            @Html.ActionLink("Powrót do listy kolejek", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

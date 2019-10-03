@@ -1,0 +1,60 @@
+﻿@model IEnumerable<KlubPilkarski.Models.Sezon>
+
+@{
+    ViewBag.Title = "Lista sezonów";
+}
+
+<h2>Lista sezonów</h2>
+
+<p align="right">
+    <button type="button" class="btn btn-primary add-button"
+            onclick="location.href='@Url.Action("Create", "Sezon")'"
+            data-toggle="tooltip" data-placement="top" title="Dodaj sezon">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Dodaj sezon
+    </button>
+</p>
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th>
+                Sezon
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                Sezon
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RokOd)/@Html.DisplayFor(modelItem => item.RokDo)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-sm edit-button"
+                            onclick="location.href='@Url.Action("Edit", "Sezon", new { id = item.IdS })'"
+                            data-toggle="tooltip" data-placement="top" title="Edytuj sezon">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm"
+                            onclick="location.href='@Url.Action("AllInSeason", "Mecz", new { id = item.IdS })'"
+                            data-toggle="tooltip" data-placement="top" title="Mecze w sezonie">
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm delete-button"
+                            onclick="location.href='@Url.Action("Delete", "Sezon", new { id = item.IdS })'"
+                            data-toggle="tooltip" data-placement="top" title="Usuń sezon">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+        }   
+    </tbody>
+
+</table>

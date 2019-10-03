@@ -1,0 +1,47 @@
+﻿@model KlubPilkarski.Models.Zawodnik
+
+@{
+    ViewBag.Title = "Usuń zawodnika";
+}
+
+<h2>Usuń zawodnika</h2>
+
+<h3>Czy jesteś pewien że chcesz usunąć ten element?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Imię
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            Klub
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Klub.Nazwa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-danger delete-button" /> 
+            @Html.ActionLink("Powrót do listy zawodników", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

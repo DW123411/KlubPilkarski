@@ -1,0 +1,39 @@
+﻿@model KlubPilkarski.Models.Stadion
+
+@{
+    ViewBag.Title = "Usuń stadion";
+}
+
+<h2>Usuń stadion</h2>
+
+<h3>Czy jesteś pewien że chcesz usunąć ten element?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+
+        <dt>
+            Miejscowość
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Miejscowosc)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-danger delete-button" /> 
+            @Html.ActionLink("Powrót do listy stadionów", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

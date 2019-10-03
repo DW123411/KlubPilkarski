@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="87962bfbbae44e9d92449b3dc13aa31d" Name="Diagram1">
+        <EntityTypeShape EntityType="BazaDanychModel.Klub" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BazaDanychModel.Kolejka" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BazaDanychModel.Mecz" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BazaDanychModel.Sedzia" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BazaDanychModel.Sezon" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="BazaDanychModel.Stadion" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BazaDanychModel.Trener" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BazaDanychModel.Zawodnik" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BazaDanychModel.ZawodnikMecz" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="BazaDanychModel.FK_Klub_Trener" ManuallyRouted="false" />
+        <AssociationConnector Association="BazaDanychModel.FK_Mecz_KlubGosc" ManuallyRouted="false" />
+        <AssociationConnector Association="BazaDanychModel.FK_Mecz_KlubGosp" ManuallyRouted="false" />
+        <AssociationConnector Association="BazaDanychModel.FK_Zawodnik_Klub" ManuallyRouted="false" />
+        <AssociationConnector Association="BazaDanychModel.FK_Mecz_Kolejka" ManuallyRouted="false" />
+        <AssociationConnector Association="BazaDanychModel.FK_Mecz_Sedzia" ManuallyRouted="false" />
+        <AssociationConnector Association="BazaDanychModel.FK_Mecz_Sezon" ManuallyRouted="false" />
+        <AssociationConnector Association="BazaDanychModel.FK_Mecz_Stadion" ManuallyRouted="false" />
+        <AssociationConnector Association="BazaDanychModel.FK_ZawodnikMecz_Mecz" ManuallyRouted="false" />
+        <AssociationConnector Association="BazaDanychModel.FK_ZawodnikMecz_Zawodnik" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
