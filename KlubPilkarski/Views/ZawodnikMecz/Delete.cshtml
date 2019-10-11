@@ -1,334 +1,29 @@
 ﻿@model KlubPilkarski.Models.ZawodnikMecz
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Usuń klub";
 }
 
-<h2>Delete</h2>
+<h2>Usuń klub</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Czy jesteś pewien że chcesz usunąć ten element?</h3>
 <div>
-    <h4>ZawodnikMecz</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Pozycja)
+            Mecz
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Pozycja)
+            @Html.DisplayFor(model => model.Mecz.Klub1.Nazwa) - @Html.DisplayFor(model => model.Mecz.Klub.Nazwa)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MinutyOd)
+            Zawodnik
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MinutyOd)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MinutyDo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MinutyDo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Bramki)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bramki)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Asysty)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Asysty)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UtworzoneSzanse)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UtworzoneSzanse)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StrzalyCelne)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StrzalyCelne)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StrzalyNiecelne)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StrzalyNiecelne)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StrzalyZablokowane)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StrzalyZablokowane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SlupkiPoprzeczki)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SlupkiPoprzeczki)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KartkiZolte)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KartkiZolte)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KartkiCzerwone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KartkiCzerwone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PodaniaUdanePolowaWlasna)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PodaniaUdanePolowaWlasna)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PodaniaUdanePolowaPrzeciwnika)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PodaniaUdanePolowaPrzeciwnika)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PodaniaNieudanePolowaWlasna)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PodaniaNieudanePolowaWlasna)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PodaniaNieudanePolowaPrzeciwnika)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PodaniaNieudanePolowaPrzeciwnika)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Dosrodkowania)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Dosrodkowania)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DlugiePodaniaUdane)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DlugiePodaniaUdane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DlugiePodaniaNieudane)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DlugiePodaniaNieudane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KluczowePodania)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KluczowePodania)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kontakty)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kontakty)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RzutyRozne)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RzutyRozne)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Wyrzuty)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Wyrzuty)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PojedynkiWygrane)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PojedynkiWygrane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PojedynkiPrzegrane)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PojedynkiPrzegrane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Wybicia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Wybicia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DryblingiUdane)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DryblingiUdane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Straty)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Straty)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Faulowany)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Faulowany)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Faule)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Faule)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OdbioryUdane)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OdbioryUdane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OdbioryNieudane)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OdbioryNieudane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GlowkiWygrane)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GlowkiWygrane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GlowkiPrzegrane)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GlowkiPrzegrane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Przejecia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Przejecia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Spalone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Spalone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OdzyskanePilki)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OdzyskanePilki)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Forma)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Forma)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mecz.Opis)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mecz.Opis)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Zawodnik.Imie)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Zawodnik.Imie)
+            @Html.DisplayFor(model => model.Zawodnik.Imie) @Html.DisplayFor(model => model.Zawodnik.Nazwisko)
         </dd>
 
     </dl>
@@ -337,8 +32,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Usuń" class="btn btn-danger delete-button" /> 
+            @Html.ActionLink("Powrót do listy występów zawodników", "Index", null, new { @class = "btn btn-primary" })
         </div>
     }
 </div>

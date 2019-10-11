@@ -1,0 +1,22 @@
+﻿.tab {
+    display: none;
+}
+
+.krok {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.krok.aktywny {
+    opacity: 1;
+}
+
+.krok.zakonczony {
+     background-color: #4CAF50;
+}

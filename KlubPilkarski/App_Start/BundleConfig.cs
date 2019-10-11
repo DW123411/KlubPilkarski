@@ -22,6 +22,9 @@ namespace KlubPilkarski
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-1.12.1.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/zawodnikMecz").Include(
+                        "~/Scripts/ZawodnikMeczForm.js"));
+
             // Użyj wersji deweloperskiej biblioteki Modernizr do nauki i opracowywania rozwiązań. Następnie, kiedy wszystko będzie
             // gotowe do produkcji, użyj narzędzia do kompilowania ze strony https://modernizr.com, aby wybrać wyłącznie potrzebne testy.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -34,7 +37,8 @@ namespace KlubPilkarski
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/dataTables.bootstrap.css"));
+                      "~/Content/dataTables.bootstrap.css",
+                      "~/Content/ZawodnikMeczForm.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                       "~/Content/themes/base/all.css"));

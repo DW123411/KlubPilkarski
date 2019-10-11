@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BazaDanychModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BazaDanychModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Klub">
           <Key>
             <PropertyRef Name="IdK" />
@@ -98,40 +98,45 @@
           <Property Name="Pozycja" Type="varchar" MaxLength="3" Nullable="false" />
           <Property Name="MinutyOd" Type="int" Nullable="false" />
           <Property Name="MinutyDo" Type="int" Nullable="false" />
-          <Property Name="Bramki" Type="int" Nullable="false" />
-          <Property Name="Asysty" Type="int" Nullable="false" />
-          <Property Name="UtworzoneSzanse" Type="int" Nullable="false" />
-          <Property Name="StrzalyCelne" Type="int" Nullable="false" />
-          <Property Name="StrzalyNiecelne" Type="int" Nullable="false" />
-          <Property Name="StrzalyZablokowane" Type="int" Nullable="false" />
-          <Property Name="SlupkiPoprzeczki" Type="int" Nullable="false" />
-          <Property Name="KartkiZolte" Type="int" Nullable="false" />
-          <Property Name="KartkiCzerwone" Type="int" Nullable="false" />
-          <Property Name="PodaniaUdanePolowaWlasna" Type="int" Nullable="false" />
-          <Property Name="PodaniaUdanePolowaPrzeciwnika" Type="int" Nullable="false" />
-          <Property Name="PodaniaNieudanePolowaWlasna" Type="int" Nullable="false" />
-          <Property Name="PodaniaNieudanePolowaPrzeciwnika" Type="int" Nullable="false" />
-          <Property Name="Dosrodkowania" Type="int" Nullable="false" />
-          <Property Name="DlugiePodaniaUdane" Type="int" Nullable="false" />
-          <Property Name="DlugiePodaniaNieudane" Type="int" Nullable="false" />
-          <Property Name="KluczowePodania" Type="int" Nullable="false" />
-          <Property Name="Kontakty" Type="int" Nullable="false" />
-          <Property Name="RzutyRozne" Type="int" Nullable="false" />
-          <Property Name="Wyrzuty" Type="int" Nullable="false" />
-          <Property Name="PojedynkiWygrane" Type="int" Nullable="false" />
-          <Property Name="PojedynkiPrzegrane" Type="int" Nullable="false" />
-          <Property Name="Wybicia" Type="int" Nullable="false" />
-          <Property Name="DryblingiUdane" Type="int" Nullable="false" />
-          <Property Name="Straty" Type="int" Nullable="false" />
-          <Property Name="Faulowany" Type="int" Nullable="false" />
-          <Property Name="Faule" Type="int" Nullable="false" />
-          <Property Name="OdbioryUdane" Type="int" Nullable="false" />
-          <Property Name="OdbioryNieudane" Type="int" Nullable="false" />
-          <Property Name="GlowkiWygrane" Type="int" Nullable="false" />
-          <Property Name="GlowkiPrzegrane" Type="int" Nullable="false" />
-          <Property Name="Przejecia" Type="int" Nullable="false" />
-          <Property Name="Spalone" Type="int" Nullable="false" />
-          <Property Name="OdzyskanePilki" Type="int" Nullable="false" />
+          <Property Name="Bramki" Type="int" />
+          <Property Name="Asysty" Type="int" />
+          <Property Name="UtworzoneSzanse" Type="int" />
+          <Property Name="StrzalyCelne" Type="int" />
+          <Property Name="StrzalyNiecelne" Type="int" />
+          <Property Name="StrzalyZablokowane" Type="int" />
+          <Property Name="SlupkiPoprzeczki" Type="int" />
+          <Property Name="KartkiZolte" Type="int" />
+          <Property Name="KartkiCzerwone" Type="int" />
+          <Property Name="PodaniaUdanePolowaWlasna" Type="int" />
+          <Property Name="PodaniaUdanePolowaPrzeciwnika" Type="int" />
+          <Property Name="PodaniaNieudane" Type="int" />
+          <Property Name="Dosrodkowania" Type="int" />
+          <Property Name="DlugiePodaniaUdane" Type="int" />
+          <Property Name="DlugiePodaniaNieudane" Type="int" />
+          <Property Name="KluczowePodania" Type="int" />
+          <Property Name="Kontakty" Type="int" />
+          <Property Name="RzutyRozne" Type="int" />
+          <Property Name="Wyrzuty" Type="int" />
+          <Property Name="PojedynkiWygrane" Type="int" />
+          <Property Name="PojedynkiPrzegrane" Type="int" />
+          <Property Name="Wybicia" Type="int" />
+          <Property Name="DryblingiUdane" Type="int" />
+          <Property Name="Straty" Type="int" />
+          <Property Name="Faulowany" Type="int" />
+          <Property Name="Faule" Type="int" />
+          <Property Name="OdbioryUdane" Type="int" />
+          <Property Name="OdbioryNieudane" Type="int" />
+          <Property Name="GlowkiWygrane" Type="int" />
+          <Property Name="GlowkiPrzegrane" Type="int" />
+          <Property Name="Przejecia" Type="int" />
+          <Property Name="Spalone" Type="int" />
+          <Property Name="OdzyskanePilki" Type="int" />
+          <Property Name="ObronaWyskok" Type="int" />
+          <Property Name="ObronaPoleKarne" Type="int" />
+          <Property Name="ObronaWyjscie" Type="int" />
+          <Property Name="Piastkowania" Type="int" />
+          <Property Name="ObronaWysokiejPilki" Type="int" />
+          <Property Name="StraconeBramki" Type="int" />
           <Property Name="Forma" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Klub_Trener">
@@ -311,8 +316,7 @@
             <End Role="ZawodnikMecz" EntitySet="ZawodnikMecz" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BazaDanychModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -427,43 +431,48 @@
           <Property Name="Pozycja" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MinutyOd" Type="Int32" Nullable="false" />
           <Property Name="MinutyDo" Type="Int32" Nullable="false" />
-          <Property Name="Bramki" Type="Int32" Nullable="false" />
-          <Property Name="Asysty" Type="Int32" Nullable="false" />
-          <Property Name="UtworzoneSzanse" Type="Int32" Nullable="false" />
-          <Property Name="StrzalyCelne" Type="Int32" Nullable="false" />
-          <Property Name="StrzalyNiecelne" Type="Int32" Nullable="false" />
-          <Property Name="StrzalyZablokowane" Type="Int32" Nullable="false" />
-          <Property Name="SlupkiPoprzeczki" Type="Int32" Nullable="false" />
-          <Property Name="KartkiZolte" Type="Int32" Nullable="false" />
-          <Property Name="KartkiCzerwone" Type="Int32" Nullable="false" />
-          <Property Name="PodaniaUdanePolowaWlasna" Type="Int32" Nullable="false" />
-          <Property Name="PodaniaUdanePolowaPrzeciwnika" Type="Int32" Nullable="false" />
-          <Property Name="PodaniaNieudanePolowaWlasna" Type="Int32" Nullable="false" />
-          <Property Name="PodaniaNieudanePolowaPrzeciwnika" Type="Int32" Nullable="false" />
-          <Property Name="Dosrodkowania" Type="Int32" Nullable="false" />
-          <Property Name="DlugiePodaniaUdane" Type="Int32" Nullable="false" />
-          <Property Name="DlugiePodaniaNieudane" Type="Int32" Nullable="false" />
-          <Property Name="KluczowePodania" Type="Int32" Nullable="false" />
-          <Property Name="Kontakty" Type="Int32" Nullable="false" />
-          <Property Name="RzutyRozne" Type="Int32" Nullable="false" />
-          <Property Name="Wyrzuty" Type="Int32" Nullable="false" />
-          <Property Name="PojedynkiWygrane" Type="Int32" Nullable="false" />
-          <Property Name="PojedynkiPrzegrane" Type="Int32" Nullable="false" />
-          <Property Name="Wybicia" Type="Int32" Nullable="false" />
-          <Property Name="DryblingiUdane" Type="Int32" Nullable="false" />
-          <Property Name="Straty" Type="Int32" Nullable="false" />
-          <Property Name="Faulowany" Type="Int32" Nullable="false" />
-          <Property Name="Faule" Type="Int32" Nullable="false" />
-          <Property Name="OdbioryUdane" Type="Int32" Nullable="false" />
-          <Property Name="OdbioryNieudane" Type="Int32" Nullable="false" />
-          <Property Name="GlowkiWygrane" Type="Int32" Nullable="false" />
-          <Property Name="GlowkiPrzegrane" Type="Int32" Nullable="false" />
-          <Property Name="Przejecia" Type="Int32" Nullable="false" />
-          <Property Name="Spalone" Type="Int32" Nullable="false" />
-          <Property Name="OdzyskanePilki" Type="Int32" Nullable="false" />
+          <Property Name="Bramki" Type="Int32" />
+          <Property Name="Asysty" Type="Int32" />
+          <Property Name="UtworzoneSzanse" Type="Int32" />
+          <Property Name="StrzalyCelne" Type="Int32" />
+          <Property Name="StrzalyNiecelne" Type="Int32" />
+          <Property Name="StrzalyZablokowane" Type="Int32" />
+          <Property Name="SlupkiPoprzeczki" Type="Int32" />
+          <Property Name="KartkiZolte" Type="Int32" />
+          <Property Name="KartkiCzerwone" Type="Int32" />
+          <Property Name="PodaniaUdanePolowaWlasna" Type="Int32" />
+          <Property Name="PodaniaUdanePolowaPrzeciwnika" Type="Int32" />
+          <Property Name="Dosrodkowania" Type="Int32" />
+          <Property Name="DlugiePodaniaUdane" Type="Int32" />
+          <Property Name="DlugiePodaniaNieudane" Type="Int32" />
+          <Property Name="KluczowePodania" Type="Int32" />
+          <Property Name="Kontakty" Type="Int32" />
+          <Property Name="RzutyRozne" Type="Int32" />
+          <Property Name="Wyrzuty" Type="Int32" />
+          <Property Name="PojedynkiWygrane" Type="Int32" />
+          <Property Name="PojedynkiPrzegrane" Type="Int32" />
+          <Property Name="Wybicia" Type="Int32" />
+          <Property Name="DryblingiUdane" Type="Int32" />
+          <Property Name="Straty" Type="Int32" />
+          <Property Name="Faulowany" Type="Int32" />
+          <Property Name="Faule" Type="Int32" />
+          <Property Name="OdbioryUdane" Type="Int32" />
+          <Property Name="OdbioryNieudane" Type="Int32" />
+          <Property Name="GlowkiWygrane" Type="Int32" />
+          <Property Name="GlowkiPrzegrane" Type="Int32" />
+          <Property Name="Przejecia" Type="Int32" />
+          <Property Name="Spalone" Type="Int32" />
+          <Property Name="OdzyskanePilki" Type="Int32" />
           <Property Name="Forma" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Mecz" Relationship="Self.FK_ZawodnikMecz_Mecz" FromRole="ZawodnikMecz" ToRole="Mecz" />
           <NavigationProperty Name="Zawodnik" Relationship="Self.FK_ZawodnikMecz_Zawodnik" FromRole="ZawodnikMecz" ToRole="Zawodnik" />
+          <Property Name="PodaniaNieudane" Type="Int32" />
+          <Property Name="ObronaWyskok" Type="Int32" />
+          <Property Name="ObronaPoleKarne" Type="Int32" />
+          <Property Name="ObronaWyjscie" Type="Int32" />
+          <Property Name="Piastkowania" Type="Int32" />
+          <Property Name="ObronaWysokiejPilki" Type="Int32" />
+          <Property Name="StraconeBramki" Type="Int32" />
         </EntityType>
         <Association Name="FK_Klub_Trener">
           <End Role="Trener" Type="Self.Trener" Multiplicity="1" />
@@ -636,10 +645,10 @@
             <End Role="ZawodnikMecz" EntitySet="ZawodnikMecz" />
           </AssociationSet>
           <FunctionImport Name="TabelaLigowaSezon" ReturnType="Collection(BazaDanychModel.TabelaLigowaSezon_Result)">
-            <Parameter Name="WybranySezon" Mode="In" Type="Int32" />
+          <Parameter Name="WybranySezon" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ZawodnikStatystyki" ReturnType="Collection(BazaDanychModel.ZawodnikStatystyki_Result)">
-            <Parameter Name="WybranyZawodnik" Mode="In" Type="Int32" />
+          <Parameter Name="WybranyZawodnik" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="TabelaLigowaSezon_Result">
@@ -762,6 +771,13 @@
           <EntitySetMapping Name="ZawodnikMecz">
             <EntityTypeMapping TypeName="BazaDanychModel.ZawodnikMecz">
               <MappingFragment StoreEntitySet="ZawodnikMecz">
+                <ScalarProperty Name="StraconeBramki" ColumnName="StraconeBramki" />
+                <ScalarProperty Name="ObronaWysokiejPilki" ColumnName="ObronaWysokiejPilki" />
+                <ScalarProperty Name="Piastkowania" ColumnName="Piastkowania" />
+                <ScalarProperty Name="ObronaWyjscie" ColumnName="ObronaWyjscie" />
+                <ScalarProperty Name="ObronaPoleKarne" ColumnName="ObronaPoleKarne" />
+                <ScalarProperty Name="ObronaWyskok" ColumnName="ObronaWyskok" />
+                <ScalarProperty Name="PodaniaNieudane" ColumnName="PodaniaNieudane" />
                 <ScalarProperty Name="IdZM" ColumnName="IdZM" />
                 <ScalarProperty Name="IdM" ColumnName="IdM" />
                 <ScalarProperty Name="IdZ" ColumnName="IdZ" />
@@ -779,8 +795,6 @@
                 <ScalarProperty Name="KartkiCzerwone" ColumnName="KartkiCzerwone" />
                 <ScalarProperty Name="PodaniaUdanePolowaWlasna" ColumnName="PodaniaUdanePolowaWlasna" />
                 <ScalarProperty Name="PodaniaUdanePolowaPrzeciwnika" ColumnName="PodaniaUdanePolowaPrzeciwnika" />
-                <ScalarProperty Name="PodaniaNieudanePolowaWlasna" ColumnName="PodaniaNieudanePolowaWlasna" />
-                <ScalarProperty Name="PodaniaNieudanePolowaPrzeciwnika" ColumnName="PodaniaNieudanePolowaPrzeciwnika" />
                 <ScalarProperty Name="Dosrodkowania" ColumnName="Dosrodkowania" />
                 <ScalarProperty Name="DlugiePodaniaUdane" ColumnName="DlugiePodaniaUdane" />
                 <ScalarProperty Name="DlugiePodaniaNieudane" ColumnName="DlugiePodaniaNieudane" />

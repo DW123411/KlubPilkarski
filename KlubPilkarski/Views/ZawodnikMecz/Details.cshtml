@@ -1,15 +1,30 @@
 ﻿@model KlubPilkarski.Models.ZawodnikMecz
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Informacje o występie zawodnika w meczu";
 }
 
-<h2>Details</h2>
+<h2>Informacje o występie zawodnika w meczu</h2>
 
 <div>
-    <h4>ZawodnikMecz</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            Mecz
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mecz.Data) @Html.DisplayFor(model => model.Mecz.Klub1.Nazwa) - @Html.DisplayFor(model => model.Mecz.Klub.Nazwa)
+        </dd>
+
+        <dt>
+            Zawodnik
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zawodnik.Imie) @Html.DisplayFor(model => model.Zawodnik.Nazwisko)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Pozycja)
         </dt>
@@ -19,19 +34,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MinutyOd)
+            Czas gry
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MinutyOd)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MinutyDo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MinutyDo)
+            @Html.DisplayFor(model => model.MinutyOd) @Html.DisplayFor(model => model.MinutyDo)
         </dd>
 
         <dt>
@@ -51,7 +58,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UtworzoneSzanse)
+            Utworzone szanse
         </dt>
 
         <dd>
@@ -59,7 +66,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StrzalyCelne)
+            Strzały celne
         </dt>
 
         <dd>
@@ -67,7 +74,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StrzalyNiecelne)
+            Strzały niecelne
         </dt>
 
         <dd>
@@ -75,7 +82,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StrzalyZablokowane)
+            Strzały zablokowane
         </dt>
 
         <dd>
@@ -83,7 +90,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SlupkiPoprzeczki)
+            Słupki i poprzeczki
         </dt>
 
         <dd>
@@ -91,7 +98,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.KartkiZolte)
+            Kartki żółte
         </dt>
 
         <dd>
@@ -99,7 +106,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.KartkiCzerwone)
+            Kartki czerwone
         </dt>
 
         <dd>
@@ -107,7 +114,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PodaniaUdanePolowaWlasna)
+            Podania celne na własnej połowie
         </dt>
 
         <dd>
@@ -115,7 +122,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PodaniaUdanePolowaPrzeciwnika)
+            Podania celne na połowie przeciwnika
         </dt>
 
         <dd>
@@ -123,23 +130,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PodaniaNieudanePolowaWlasna)
+            Podania niecelne
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PodaniaNieudanePolowaWlasna)
+            @Html.DisplayFor(model => model.PodaniaNieudane)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PodaniaNieudanePolowaPrzeciwnika)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PodaniaNieudanePolowaPrzeciwnika)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Dosrodkowania)
+            Dośrodkowania
         </dt>
 
         <dd>
@@ -147,7 +146,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DlugiePodaniaUdane)
+            Celne długie podania
         </dt>
 
         <dd>
@@ -155,7 +154,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DlugiePodaniaNieudane)
+            Niecelne długie podania
         </dt>
 
         <dd>
@@ -163,7 +162,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.KluczowePodania)
+            Kluczowe podania
         </dt>
 
         <dd>
@@ -179,7 +178,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.RzutyRozne)
+            Rzuty rożne
         </dt>
 
         <dd>
@@ -195,7 +194,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PojedynkiWygrane)
+            Pojedunki wygrane
         </dt>
 
         <dd>
@@ -203,7 +202,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PojedynkiPrzegrane)
+            Pojedynki przegrane
         </dt>
 
         <dd>
@@ -219,7 +218,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DryblingiUdane)
+            Dryblingi udane
         </dt>
 
         <dd>
@@ -251,7 +250,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OdbioryUdane)
+            Odbiory udane
         </dt>
 
         <dd>
@@ -259,7 +258,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OdbioryNieudane)
+            Odbiory nieudane
         </dt>
 
         <dd>
@@ -267,7 +266,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GlowkiWygrane)
+            Główki wygrane
         </dt>
 
         <dd>
@@ -275,7 +274,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GlowkiPrzegrane)
+            Główki przegrane
         </dt>
 
         <dd>
@@ -283,7 +282,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Przejecia)
+            Przejęcia
         </dt>
 
         <dd>
@@ -299,7 +298,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OdzyskanePilki)
+            Odzyskane piłki
         </dt>
 
         <dd>
@@ -314,25 +313,9 @@
             @Html.DisplayFor(model => model.Forma)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Mecz.Opis)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mecz.Opis)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Zawodnik.Imie)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Zawodnik.Imie)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdZM }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.IdZM }, new { @class = "btn btn-warning edit-button" })
+    @Html.ActionLink("Powrót do listy występów zawodników", "Index", null, new { @class = "btn btn-primary" })
 </p>

@@ -39,7 +39,6 @@ namespace KlubPilkarski.Controllers
         // GET: ZawodnikMecz/Create
         public ActionResult Create()
         {
-            String[] pozycje = new String[] { "BR","PO","ŚO","LO","ŚPD","PP","ŚP","LP","ŚPO","CN","PS","N","LS" };
             var mecze =
                 db.Mecz
                 .Select(s => new
@@ -56,10 +55,11 @@ namespace KlubPilkarski.Controllers
                     Opis = s.Imie + " " + s.Nazwisko + ", " +s.Klub.Nazwa
                 })
                 .ToList();
-            ViewBag.Pozycja = new SelectList(pozycje);
             ViewBag.IdM = new SelectList(mecze, "IdM", "Opis");
             ViewBag.IdZ = new SelectList(zawodnicy, "IdZ", "Opis");
-            return View();
+
+            ZawodnikMecz defaultZawodnikMecz = new ZawodnikMecz();
+            return View(defaultZawodnikMecz);
         }
 
         // POST: ZawodnikMecz/Create
@@ -67,7 +67,7 @@ namespace KlubPilkarski.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdZM,IdM,IdZ,Pozycja,MinutyOd,MinutyDo,Bramki,Asysty,UtworzoneSzanse,StrzalyCelne,StrzalyNiecelne,StrzalyZablokowane,SlupkiPoprzeczki,KartkiZolte,KartkiCzerwone,PodaniaUdanePolowaWlasna,PodaniaUdanePolowaPrzeciwnika,PodaniaNieudanePolowaWlasna,PodaniaNieudanePolowaPrzeciwnika,Dosrodkowania,DlugiePodaniaUdane,DlugiePodaniaNieudane,KluczowePodania,Kontakty,RzutyRozne,Wyrzuty,PojedynkiWygrane,PojedynkiPrzegrane,Wybicia,DryblingiUdane,Straty,Faulowany,Faule,OdbioryUdane,OdbioryNieudane,GlowkiWygrane,GlowkiPrzegrane,Przejecia,Spalone,OdzyskanePilki,Forma")] ZawodnikMecz zawodnikMecz)
+        public ActionResult Create([Bind(Include = "IdZM,IdM,IdZ,Pozycja,MinutyOd,MinutyDo,Bramki,Asysty,UtworzoneSzanse,StrzalyCelne,StrzalyNiecelne,StrzalyZablokowane,SlupkiPoprzeczki,KartkiZolte,KartkiCzerwone,PodaniaUdanePolowaWlasna,PodaniaUdanePolowaPrzeciwnika,PodaniaNieudane,Dosrodkowania,DlugiePodaniaUdane,DlugiePodaniaNieudane,KluczowePodania,Kontakty,RzutyRozne,Wyrzuty,PojedynkiWygrane,PojedynkiPrzegrane,Wybicia,DryblingiUdane,Straty,Faulowany,Faule,OdbioryUdane,OdbioryNieudane,GlowkiWygrane,GlowkiPrzegrane,Przejecia,Spalone,OdzyskanePilki,ObronaWyskok,ObronaPoleKarne,ObronaWyjscie,Piastkowanie,ObronaWysokiejPilki,StraconeBramki,Forma")] ZawodnikMecz zawodnikMecz)
         {
             if (ModelState.IsValid)
             {
@@ -76,8 +76,24 @@ namespace KlubPilkarski.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdM = new SelectList(db.Mecz, "IdM", "Opis", zawodnikMecz.IdM);
-            ViewBag.IdZ = new SelectList(db.Zawodnik, "IdZ", "Imie", zawodnikMecz.IdZ);
+            var mecze =
+                db.Mecz
+                .Select(s => new
+                {
+                    IdM = s.IdM,
+                    Opis = s.Sezon.RokOd + "/" + s.Sezon.RokDo + ", Kolejka " + s.Kolejka.Nr + ", " + s.Klub1.Nazwa + " - " + s.Klub.Nazwa
+                })
+                .ToList();
+            var zawodnicy =
+                db.Zawodnik
+                .Select(s => new
+                {
+                    IdZ = s.IdZ,
+                    Opis = s.Imie + " " + s.Nazwisko + ", " + s.Klub.Nazwa
+                })
+                .ToList();
+            ViewBag.IdM = new SelectList(mecze, "IdM", "Opis", zawodnikMecz.IdM);
+            ViewBag.IdZ = new SelectList(zawodnicy, "IdZ", "Opis", zawodnikMecz.IdZ);
             return View(zawodnikMecz);
         }
 
@@ -93,8 +109,25 @@ namespace KlubPilkarski.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdM = new SelectList(db.Mecz, "IdM", "Opis", zawodnikMecz.IdM);
-            ViewBag.IdZ = new SelectList(db.Zawodnik, "IdZ", "Imie", zawodnikMecz.IdZ);
+            var mecze =
+                db.Mecz
+                .Select(s => new
+                {
+                    IdM = s.IdM,
+                    Opis = s.Sezon.RokOd + "/" + s.Sezon.RokDo + ", Kolejka " + s.Kolejka.Nr + ", " + s.Klub1.Nazwa + " - " + s.Klub.Nazwa
+                })
+                .ToList();
+            var zawodnicy =
+                db.Zawodnik
+                .Select(s => new
+                {
+                    IdZ = s.IdZ,
+                    Opis = s.Imie + " " + s.Nazwisko + ", " + s.Klub.Nazwa
+                })
+                .ToList();
+            ViewBag.IdM = new SelectList(mecze, "IdM", "Opis", zawodnikMecz.IdM);
+            ViewBag.IdZ = new SelectList(zawodnicy, "IdZ", "Opis", zawodnikMecz.IdZ);
+            ViewBag.Pozycja = zawodnikMecz.Pozycja;
             return View(zawodnikMecz);
         }
 
@@ -103,7 +136,7 @@ namespace KlubPilkarski.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdZM,IdM,IdZ,Pozycja,MinutyOd,MinutyDo,Bramki,Asysty,UtworzoneSzanse,StrzalyCelne,StrzalyNiecelne,StrzalyZablokowane,SlupkiPoprzeczki,KartkiZolte,KartkiCzerwone,PodaniaUdanePolowaWlasna,PodaniaUdanePolowaPrzeciwnika,PodaniaNieudanePolowaWlasna,PodaniaNieudanePolowaPrzeciwnika,Dosrodkowania,DlugiePodaniaUdane,DlugiePodaniaNieudane,KluczowePodania,Kontakty,RzutyRozne,Wyrzuty,PojedynkiWygrane,PojedynkiPrzegrane,Wybicia,DryblingiUdane,Straty,Faulowany,Faule,OdbioryUdane,OdbioryNieudane,GlowkiWygrane,GlowkiPrzegrane,Przejecia,Spalone,OdzyskanePilki,Forma")] ZawodnikMecz zawodnikMecz)
+        public ActionResult Edit([Bind(Include = "IdZM,IdM,IdZ,Pozycja,MinutyOd,MinutyDo,Bramki,Asysty,UtworzoneSzanse,StrzalyCelne,StrzalyNiecelne,StrzalyZablokowane,SlupkiPoprzeczki,KartkiZolte,KartkiCzerwone,PodaniaUdanePolowaWlasna,PodaniaUdanePolowaPrzeciwnika,PodaniaNieudane,Dosrodkowania,DlugiePodaniaUdane,DlugiePodaniaNieudane,KluczowePodania,Kontakty,RzutyRozne,Wyrzuty,PojedynkiWygrane,PojedynkiPrzegrane,Wybicia,DryblingiUdane,Straty,Faulowany,Faule,OdbioryUdane,OdbioryNieudane,GlowkiWygrane,GlowkiPrzegrane,Przejecia,Spalone,OdzyskanePilki,ObronaWyskok,ObronaPoleKarne,ObronaWyjscie,Piastkowanie,ObronaWysokiejPilki,StraconeBramki,Forma")] ZawodnikMecz zawodnikMecz)
         {
             if (ModelState.IsValid)
             {
@@ -111,8 +144,25 @@ namespace KlubPilkarski.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdM = new SelectList(db.Mecz, "IdM", "Opis", zawodnikMecz.IdM);
-            ViewBag.IdZ = new SelectList(db.Zawodnik, "IdZ", "Imie", zawodnikMecz.IdZ);
+            var mecze =
+                db.Mecz
+                .Select(s => new
+                {
+                    IdM = s.IdM,
+                    Opis = s.Sezon.RokOd + "/" + s.Sezon.RokDo + ", Kolejka " + s.Kolejka.Nr + ", " + s.Klub1.Nazwa + " - " + s.Klub.Nazwa
+                })
+                .ToList();
+            var zawodnicy =
+                db.Zawodnik
+                .Select(s => new
+                {
+                    IdZ = s.IdZ,
+                    Opis = s.Imie + " " + s.Nazwisko + ", " + s.Klub.Nazwa
+                })
+                .ToList();
+            ViewBag.IdM = new SelectList(mecze, "IdM", "Opis", zawodnikMecz.IdM);
+            ViewBag.IdZ = new SelectList(zawodnicy, "IdZ", "Opis", zawodnikMecz.IdZ);
+            ViewBag.Pozycja = zawodnikMecz.Pozycja;
             return View(zawodnikMecz);
         }
 
