@@ -262,6 +262,10 @@
         <Function Name="TabelaLigowaSezon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WybranySezon" Type="int" Mode="In" />
         </Function>
+        <Function Name="ZawodnicyMecz" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KlubGospodarzy" Type="int" Mode="In" />
+          <Parameter Name="KlubGosci" Type="int" Mode="In" />
+        </Function>
         <Function Name="ZawodnikStatystyki" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WybranyZawodnik" Type="int" Mode="In" />
         </Function>
@@ -650,6 +654,10 @@
           <FunctionImport Name="ZawodnikStatystyki" ReturnType="Collection(BazaDanychModel.ZawodnikStatystyki_Result)">
           <Parameter Name="WybranyZawodnik" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="ZawodnicyMecz" ReturnType="Collection(BazaDanychModel.ZawodnicyMecz_Result)">
+            <Parameter Name="KlubGospodarzy" Mode="In" Type="Int32" />
+            <Parameter Name="KlubGosci" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="TabelaLigowaSezon_Result">
           <Property Type="String" Name="Klub" Nullable="false" MaxLength="90" />
@@ -670,6 +678,12 @@
           <Property Type="Int32" Name="SumaPodanNieudanychPolowaPrzeciwnika" Nullable="true" />
           <Property Type="Int32" Name="SumaKartekZoltych" Nullable="true" />
           <Property Type="Int32" Name="SumaKartekCzerwonych" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ZawodnicyMecz_Result">
+          <Property Type="Int32" Name="IdZ" Nullable="false" />
+          <Property Type="String" Name="Imie" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Nazwisko" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IdK" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -845,6 +859,16 @@
                 <ScalarProperty Name="SumaPodanNieudanychPolowaPrzeciwnika" ColumnName="SumaPodanNieudanychPolowaPrzeciwnika" />
                 <ScalarProperty Name="SumaKartekZoltych" ColumnName="SumaKartekZoltych" />
                 <ScalarProperty Name="SumaKartekCzerwonych" ColumnName="SumaKartekCzerwonych" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ZawodnicyMecz" FunctionName="BazaDanychModel.Store.ZawodnicyMecz">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BazaDanychModel.ZawodnicyMecz_Result">
+                <ScalarProperty Name="IdZ" ColumnName="IdZ" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="IdK" ColumnName="IdK" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

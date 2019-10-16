@@ -18,7 +18,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.IdM, "Mecz", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("IdM", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("IdM", null, htmlAttributes: new { @id = "meczSelect", @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.IdM, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -26,7 +26,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.IdZ, "Zawodnik", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("IdZ", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("IdZ", null, htmlAttributes: new { @id = "zawodnicySelect", @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.IdZ, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -428,5 +428,29 @@
     @Scripts.Render("~/bundles/zawodnikMecz")
     <script>
         wyswietlZnacznikiKroku();
+    </script>
+    <script>
+        var url = '@Url.Action("FetchPlayers","ZawodnikMecz")';
+        var zawodnicy = $('#zawodnicySelect');
+
+        $(document).ready(function () {
+            var id = $('#meczSelect').val();
+            $.getJSON(url, { id: id }, function (response) {
+                zawodnicy.empty();
+                $.each(response, function (index, item) {
+                    zawodnicy.append($('<option></option>').text(item.Imie+" "+item.Nazwisko).val(item.IdZ));
+                });
+            });
+        });
+
+        $('#meczSelect').on('load change', function () {
+            var id = $(this).val();
+            $.getJSON(url, { id: id }, function (response) {
+                zawodnicy.empty();
+                $.each(response, function (index, item) {
+                    zawodnicy.append($('<option></option>').text(item.Imie+" "+item.Nazwisko).val(item.IdZ));
+                });
+            });
+        });
     </script>
 }

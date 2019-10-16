@@ -9,7 +9,7 @@
 @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "zawodnikMeczForm" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -19,7 +19,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.IdM, "Mecz", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("IdM", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("IdM", null, htmlAttributes: new { @id = "meczSelect", @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.IdM, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -27,7 +27,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.IdZ, "Zawodnik", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("IdZ", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("IdZ", null, htmlAttributes: new { @id = "zawodnicySelect", @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.IdZ, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -177,8 +177,8 @@
                     @Html.ValidationMessageFor(model => model.SlupkiPoprzeczki, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div> 
-        
+        </div>
+
         <div class="tab" id="br">
             <div class="form-group">
                 @Html.LabelFor(model => model.KartkiZolte, "Kartki żółte", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -428,5 +428,33 @@
     @Scripts.Render("~/bundles/zawodnikMecz")
     <script>
         ustawPozycje("@ViewBag.Pozycja");
+    </script>
+    <script>
+        var url = '@Url.Action("FetchPlayers","ZawodnikMecz")';
+        var zawodnicy = $('#zawodnicySelect');
+
+        $(document).ready(function () {
+            var id = $('#meczSelect').val();
+            $.getJSON(url, { id: id }, function (response) {
+                zawodnicy.empty();
+                $.each(response, function (index, item) {
+                    if (item.IdZ == @ViewBag.IdZawodnik) {
+                        zawodnicy.append($('<option></option>').text(item.Imie + " " + item.Nazwisko).val(item.IdZ).attr("selected",true));
+                    } else {
+                        zawodnicy.append($('<option></option>').text(item.Imie + " " + item.Nazwisko).val(item.IdZ));
+                    }
+                });
+            });
+        });
+
+        $('#meczSelect').change(function () {
+            var id = $(this).val();
+            $.getJSON(url, { id: id }, function (response) {
+                zawodnicy.empty();
+                $.each(response, function (index, item) {
+                    zawodnicy.append($('<option></option>').text(item.Imie+" "+item.Nazwisko).val(item.IdZ));
+                });
+            });
+        });
     </script>
 }

@@ -54,5 +54,18 @@ namespace KlubPilkarski.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ZawodnikStatystyki_Result>("ZawodnikStatystyki", wybranyZawodnikParameter);
         }
+    
+        public virtual ObjectResult<ZawodnicyMecz_Result> ZawodnicyMecz(Nullable<int> klubGospodarzy, Nullable<int> klubGosci)
+        {
+            var klubGospodarzyParameter = klubGospodarzy.HasValue ?
+                new ObjectParameter("KlubGospodarzy", klubGospodarzy) :
+                new ObjectParameter("KlubGospodarzy", typeof(int));
+    
+            var klubGosciParameter = klubGosci.HasValue ?
+                new ObjectParameter("KlubGosci", klubGosci) :
+                new ObjectParameter("KlubGosci", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ZawodnicyMecz_Result>("ZawodnicyMecz", klubGospodarzyParameter, klubGosciParameter);
+        }
     }
 }

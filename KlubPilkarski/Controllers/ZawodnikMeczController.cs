@@ -128,6 +128,7 @@ namespace KlubPilkarski.Controllers
             ViewBag.IdM = new SelectList(mecze, "IdM", "Opis", zawodnikMecz.IdM);
             ViewBag.IdZ = new SelectList(zawodnicy, "IdZ", "Opis", zawodnikMecz.IdZ);
             ViewBag.Pozycja = zawodnikMecz.Pozycja;
+            ViewBag.IdZawodnik = zawodnikMecz.IdZ;
             return View(zawodnikMecz);
         }
 
@@ -164,6 +165,13 @@ namespace KlubPilkarski.Controllers
             ViewBag.IdZ = new SelectList(zawodnicy, "IdZ", "Opis", zawodnikMecz.IdZ);
             ViewBag.Pozycja = zawodnikMecz.Pozycja;
             return View(zawodnikMecz);
+        }
+
+        public JsonResult FetchPlayers(int id)
+        {
+            var mecz = db.Mecz.Find(id);
+            var zawodnicy = db.ZawodnicyMecz(mecz.IdKlubGospodarze, mecz.IdKlubGoscie);
+            return Json(zawodnicy, JsonRequestBehavior.AllowGet);
         }
 
         // GET: ZawodnikMecz/Delete/5

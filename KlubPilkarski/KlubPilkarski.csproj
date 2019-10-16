@@ -180,6 +180,9 @@
     <Compile Include="Models\Trener.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ZawodnicyMecz_Result.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Zawodnik.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
