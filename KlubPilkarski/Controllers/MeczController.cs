@@ -155,6 +155,7 @@ namespace KlubPilkarski.Controllers
             ViewBag.IdSedzia = new SelectList(sedziowie, "IdSedzia", "Opis", mecz.IdSedzia);
             ViewBag.IdS = new SelectList(sezony, "IdS", "Opis", mecz.IdS);
             ViewBag.IdStadion = new SelectList(stadiony, "IdStadion", "Opis", mecz.IdStadion);
+            ViewBag.IdKlub = mecz.IdKlubGoscie;
             return View(mecz);
         }
 
@@ -177,7 +178,14 @@ namespace KlubPilkarski.Controllers
             ViewBag.IdSedzia = new SelectList(db.Sedzia, "IdSedzia", "Imie", mecz.IdSedzia);
             ViewBag.IdS = new SelectList(db.Sezon, "IdS", "IdS", mecz.IdS);
             ViewBag.IdStadion = new SelectList(db.Stadion, "IdStadion", "Nazwa", mecz.IdStadion);
+            ViewBag.IdKlub = mecz.IdKlubGoscie;
             return View(mecz);
+        }
+
+        public JsonResult FetchClubs(int id)
+        {
+            var kluby = db.Klub.Where(k => k.IdK != id).Select(k => new { IdK = k.IdK, Nazwa = k.Nazwa }).ToList();
+            return Json(kluby, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Mecz/Delete/5

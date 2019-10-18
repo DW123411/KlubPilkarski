@@ -443,7 +443,7 @@
             });
         });
 
-        $('#meczSelect').on('load change', function () {
+        $('#meczSelect').change(function () {
             var id = $(this).val();
             $.getJSON(url, { id: id }, function (response) {
                 zawodnicy.empty();

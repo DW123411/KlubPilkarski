@@ -51,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdKlubGospodarze, "Gospodarze", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdKlubGospodarze", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdKlubGospodarze", null, htmlAttributes: new { @id = "klubGospodarzeSelect", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdKlubGospodarze, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdKlubGoscie, "Goscie", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdKlubGoscie", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdKlubGoscie", null, htmlAttributes: new { @id = "klubGoscieSelect", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdKlubGoscie, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -99,4 +99,37 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var url = '@Url.Action("FetchClubs","Mecz")';
+        var gospodarze = $('#klubGospodarzeSelect');
+        var goscie = $('#klubGoscieSelect');
+
+        $(document).ready(function () {
+            var id = $('#klubGospodarzeSelect').val();
+            $.getJSON(url, { id: id }, function (response) {
+                goscie.empty();
+                $.each(response, function (index, item) {
+                    if (item.IdK == @ViewBag.IdKlub) {
+                        goscie.append($('<option></option>').text(item.Nazwa).val(item.IdK).attr('selected', true));
+                    } else {
+                        goscie.append($('<option></option>').text(item.Nazwa).val(item.IdK));
+                    }
+                });
+            });
+        });
+
+        $('#klubGospodarzeSelect').change(function () {
+            var id = $(this).val();
+            $.getJSON(url, { id: id }, function (response) {
+                goscie.empty();
+                $.each(response, function (index, item) {
+                    if (item.IdK == @ViewBag.IdKlub) {
+                        goscie.append($('<option></option>').text(item.Nazwa).val(item.IdK).attr('selected', true));
+                    } else {
+                        goscie.append($('<option></option>').text(item.Nazwa).val(item.IdK));
+                    }
+                });
+            });
+        });
+    </script>
 }
