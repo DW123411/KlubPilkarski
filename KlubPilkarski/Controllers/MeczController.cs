@@ -104,12 +104,36 @@ namespace KlubPilkarski.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdKlubGoscie = new SelectList(db.Klub, "IdK", "Siedziba", mecz.IdKlubGoscie);
-            ViewBag.IdKlubGospodarze = new SelectList(db.Klub, "IdK", "Siedziba", mecz.IdKlubGospodarze);
-            ViewBag.IdKolejka = new SelectList(db.Kolejka, "IdKolejka", "IdKolejka", mecz.IdKolejka);
-            ViewBag.IdSedzia = new SelectList(db.Sedzia, "IdSedzia", "Imie", mecz.IdSedzia);
-            ViewBag.IdS = new SelectList(db.Sezon, "IdS", "IdS", mecz.IdS);
-            ViewBag.IdStadion = new SelectList(db.Stadion, "IdStadion", "Nazwa", mecz.IdStadion);
+            var sezony =
+                db.Sezon
+                .Select(s => new
+                {
+                    IdS = s.IdS,
+                    Opis = s.RokOd + "/" + s.RokDo
+                })
+                .ToList();
+            var sedziowie =
+                db.Sedzia
+                .Select(s => new
+                {
+                    IdSedzia = s.IdSedzia,
+                    Opis = s.Imie + " " + s.Nazwisko
+                })
+                .ToList();
+            var stadiony =
+                db.Stadion
+                .Select(s => new
+                {
+                    IdStadion = s.IdStadion,
+                    Opis = s.Nazwa + " - " + s.Miejscowosc
+                })
+                .ToList();
+            ViewBag.IdKlubGoscie = new SelectList(db.Klub, "IdK", "Nazwa");
+            ViewBag.IdKlubGospodarze = new SelectList(db.Klub, "IdK", "Nazwa");
+            ViewBag.IdKolejka = new SelectList(db.Kolejka, "IdKolejka", "Nr");
+            ViewBag.IdSedzia = new SelectList(sedziowie, "IdSedzia", "Opis");
+            ViewBag.IdS = new SelectList(sezony, "IdS", "Opis");
+            ViewBag.IdStadion = new SelectList(stadiony, "IdStadion", "Opis");
             return View(mecz);
         }
 
@@ -172,12 +196,36 @@ namespace KlubPilkarski.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdKlubGoscie = new SelectList(db.Klub, "IdK", "Siedziba", mecz.IdKlubGoscie);
-            ViewBag.IdKlubGospodarze = new SelectList(db.Klub, "IdK", "Siedziba", mecz.IdKlubGospodarze);
-            ViewBag.IdKolejka = new SelectList(db.Kolejka, "IdKolejka", "IdKolejka", mecz.IdKolejka);
-            ViewBag.IdSedzia = new SelectList(db.Sedzia, "IdSedzia", "Imie", mecz.IdSedzia);
-            ViewBag.IdS = new SelectList(db.Sezon, "IdS", "IdS", mecz.IdS);
-            ViewBag.IdStadion = new SelectList(db.Stadion, "IdStadion", "Nazwa", mecz.IdStadion);
+            var sezony =
+                db.Sezon
+                .Select(s => new
+                {
+                    IdS = s.IdS,
+                    Opis = s.RokOd + "/" + s.RokDo
+                })
+                .ToList();
+            var sedziowie =
+                db.Sedzia
+                .Select(s => new
+                {
+                    IdSedzia = s.IdSedzia,
+                    Opis = s.Imie + " " + s.Nazwisko
+                })
+                .ToList();
+            var stadiony =
+                db.Stadion
+                .Select(s => new
+                {
+                    IdStadion = s.IdStadion,
+                    Opis = s.Nazwa + " - " + s.Miejscowosc
+                })
+                .ToList();
+            ViewBag.IdKlubGoscie = new SelectList(db.Klub, "IdK", "Nazwa");
+            ViewBag.IdKlubGospodarze = new SelectList(db.Klub, "IdK", "Nazwa");
+            ViewBag.IdKolejka = new SelectList(db.Kolejka, "IdKolejka", "Nr");
+            ViewBag.IdSedzia = new SelectList(sedziowie, "IdSedzia", "Opis");
+            ViewBag.IdS = new SelectList(sezony, "IdS", "Opis");
+            ViewBag.IdStadion = new SelectList(stadiony, "IdStadion", "Opis");
             ViewBag.IdKlub = mecz.IdKlubGoscie;
             return View(mecz);
         }

@@ -65,7 +65,15 @@ namespace KlubPilkarski.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdT = new SelectList(db.Trener, "IdT", "Imie", klub.IdT);
+            var trenerzy =
+                db.Trener
+                .Select(s => new
+                {
+                    IdT = s.IdT,
+                    Opis = s.Imie + " " + s.Nazwisko
+                })
+                .ToList();
+            ViewBag.IdT = new SelectList(trenerzy, "IdT", "Opis");
             return View(klub);
         }
 
@@ -106,7 +114,15 @@ namespace KlubPilkarski.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdT = new SelectList(db.Trener, "IdT", "Imie", klub.IdT);
+            var trenerzy =
+                db.Trener
+                .Select(s => new
+                {
+                    IdT = s.IdT,
+                    Opis = s.Imie + " " + s.Nazwisko
+                })
+                .ToList();
+            ViewBag.IdT = new SelectList(trenerzy, "IdT", "Opis");
             return View(klub);
         }
 

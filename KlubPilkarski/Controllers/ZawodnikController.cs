@@ -57,7 +57,7 @@ namespace KlubPilkarski.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdK = new SelectList(db.Klub, "IdK", "Siedziba", zawodnik.IdK);
+            ViewBag.IdK = new SelectList(db.Klub, "IdK", "Nazwa", zawodnik.IdK);
             return View(zawodnik);
         }
 
@@ -90,7 +90,7 @@ namespace KlubPilkarski.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdK = new SelectList(db.Klub, "IdK", "Siedziba", zawodnik.IdK);
+            ViewBag.IdK = new SelectList(db.Klub, "IdK", "Nazwa", zawodnik.IdK);
             return View(zawodnik);
         }
 
