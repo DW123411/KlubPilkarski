@@ -8,314 +8,388 @@
 
 <div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Mecz
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mecz.Data) @Html.DisplayFor(model => model.Mecz.Klub1.Nazwa) - @Html.DisplayFor(model => model.Mecz.Klub.Nazwa)
-        </dd>
-
-        <dt>
-            Zawodnik
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Zawodnik.Imie) @Html.DisplayFor(model => model.Zawodnik.Nazwisko)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pozycja)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pozycja)
-        </dd>
-
-        <dt>
-            Czas gry
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MinutyOd) @Html.DisplayFor(model => model.MinutyDo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Bramki)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bramki)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Asysty)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Asysty)
-        </dd>
-
-        <dt>
-            Utworzone szanse
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UtworzoneSzanse)
-        </dd>
-
-        <dt>
-            Strzały celne
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StrzalyCelne)
-        </dd>
-
-        <dt>
-            Strzały niecelne
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StrzalyNiecelne)
-        </dd>
-
-        <dt>
-            Strzały zablokowane
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StrzalyZablokowane)
-        </dd>
-
-        <dt>
-            Słupki i poprzeczki
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SlupkiPoprzeczki)
-        </dd>
-
-        <dt>
-            Kartki żółte
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KartkiZolte)
-        </dd>
-
-        <dt>
-            Kartki czerwone
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KartkiCzerwone)
-        </dd>
-
-        <dt>
-            Podania celne na własnej połowie
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PodaniaUdanePolowaWlasna)
-        </dd>
-
-        <dt>
-            Podania celne na połowie przeciwnika
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PodaniaUdanePolowaPrzeciwnika)
-        </dd>
-
-        <dt>
-            Podania niecelne
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PodaniaNieudane)
-        </dd>
-
-        <dt>
-            Dośrodkowania
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Dosrodkowania)
-        </dd>
-
-        <dt>
-            Celne długie podania
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DlugiePodaniaUdane)
-        </dd>
-
-        <dt>
-            Niecelne długie podania
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DlugiePodaniaNieudane)
-        </dd>
-
-        <dt>
-            Kluczowe podania
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KluczowePodania)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kontakty)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kontakty)
-        </dd>
-
-        <dt>
-            Rzuty rożne
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RzutyRozne)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Wyrzuty)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Wyrzuty)
-        </dd>
-
-        <dt>
-            Pojedunki wygrane
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PojedynkiWygrane)
-        </dd>
-
-        <dt>
-            Pojedynki przegrane
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PojedynkiPrzegrane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Wybicia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Wybicia)
-        </dd>
-
-        <dt>
-            Dryblingi udane
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DryblingiUdane)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Straty)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Straty)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Faulowany)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Faulowany)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Faule)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Faule)
-        </dd>
-
-        <dt>
-            Odbiory udane
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OdbioryUdane)
-        </dd>
-
-        <dt>
-            Odbiory nieudane
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OdbioryNieudane)
-        </dd>
-
-        <dt>
-            Główki wygrane
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GlowkiWygrane)
-        </dd>
-
-        <dt>
-            Główki przegrane
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GlowkiPrzegrane)
-        </dd>
-
-        <dt>
-            Przejęcia
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Przejecia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Spalone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Spalone)
-        </dd>
-
-        <dt>
-            Odzyskane piłki
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OdzyskanePilki)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Forma)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Forma)
-        </dd>
-
-    </dl>
+    <div class="row">
+        <div class="col-md-6 panel">
+            <p align="center">
+                <strong>Mecz</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Mecz.Data) @Html.DisplayFor(model => model.Mecz.Klub1.Nazwa) - @Html.DisplayFor(model => model.Mecz.Klub.Nazwa)
+            </p>
+        </div>
+        <div class="col-md-6 panel">
+            <p align="center">
+                <strong>Zawodnik</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Zawodnik.Imie) @Html.DisplayFor(model => model.Zawodnik.Nazwisko)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>@Html.DisplayNameFor(model => model.Pozycja)</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Pozycja)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Czas gry</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.MinutyOd) - @Html.DisplayFor(model => model.MinutyDo)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>@Html.DisplayNameFor(model => model.Bramki)</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Bramki)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Utworzone szanse</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.UtworzoneSzanse)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Strzały celne</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.StrzalyCelne)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Strzały niecelne</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.StrzalyNiecelne)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Strzały zablokowane</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.StrzalyZablokowane)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Słupki i poprzeczki</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.SlupkiPoprzeczki)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Kartki żółte</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.KartkiZolte)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Kartki czerwone</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.KartkiCzerwone)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Podania celne na własnej połowie</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.PodaniaUdanePolowaWlasna)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Podania celne na połowie przeciwnika</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.PodaniaUdanePolowaPrzeciwnika)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Podania niecelne</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.PodaniaNieudane)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Dośrodkowania</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Dosrodkowania)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Celne długie podania</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.DlugiePodaniaUdane)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Niecelne długie podania</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.DlugiePodaniaNieudane)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Kluczowe podania</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.KluczowePodania)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>@Html.DisplayNameFor(model => model.Kontakty)</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Kontakty)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Rzuty rożne</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.RzutyRozne)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>@Html.DisplayNameFor(model => model.Wyrzuty)</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Wyrzuty)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Pojedynki wygrane</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.PojedynkiWygrane)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Pojedynki przegrane</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.PojedynkiPrzegrane)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>@Html.DisplayNameFor(model => model.Wybicia)</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Wybicia)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Dryblingi udane</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.DryblingiUdane)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>@Html.DisplayNameFor(model => model.Straty)</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Straty)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>@Html.DisplayNameFor(model => model.Faulowany)</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Faulowany)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>@Html.DisplayNameFor(model => model.Faule)</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Faule)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Odbiory udane</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.OdbioryUdane)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Odbiory nieudane</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.OdbioryNieudane)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Główki wygrane</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.GlowkiWygrane)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Główki przegrane</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.GlowkiPrzegrane)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Przejęcia</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Przejecia)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>@Html.DisplayNameFor(model => model.Spalone)</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Spalone)
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>Odzyskane piłki</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.OdzyskanePilki)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>@Html.DisplayNameFor(model => model.Asysty)</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Asysty)
+            </p>
+        </div>
+        <div class="col-md-4 panel">
+            <p align="center">
+                <strong>@Html.DisplayNameFor(model => model.Forma)</strong>
+            </p>
+
+            <p align="center">
+                @Html.DisplayFor(model => model.Forma)
+            </p>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.IdZM }, new { @class = "btn btn-warning edit-button" })
-    @Html.ActionLink("Powrót do listy występów zawodników", "Index", null, new { @class = "btn btn-primary" })
-</p>
+        <p>
+            @Html.ActionLink("Edytuj", "Edit", new { id = Model.IdZM }, new { @class = "btn btn-warning edit-button" })
+            @Html.ActionLink("Powrót do listy występów zawodników", "Index", null, new { @class = "btn btn-primary" })
+        </p>

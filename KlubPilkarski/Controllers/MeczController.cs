@@ -39,6 +39,15 @@ namespace KlubPilkarski.Controllers
             return View(tabelaLigowa.ToList());
         }
 
+        //GET: LatestLeagueTable
+        public ActionResult LatestLeagueTable()
+        {
+            var sezony = db.Sezon.OrderByDescending(r => r.RokDo);
+            ViewBag.SelectedSeason = sezony.First();
+            var tabelaLigowa = db.TabelaLigowaSezon(sezony.First().IdS);
+            return View("LeagueTable",tabelaLigowa.ToList());
+        }
+
         // GET: Mecz/Details/5
         public ActionResult Details(int? id)
         {
