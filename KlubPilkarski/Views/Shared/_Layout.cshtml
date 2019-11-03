@@ -22,7 +22,8 @@
                 @Html.ActionLink("Klub piłkarski", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                @if (System.Web.HttpContext.Current.User.IsInRole("PracownikKlubu") && System.Web.HttpContext.Current.User.Identity.IsAuthenticated) {
+                @if (System.Web.HttpContext.Current.User.IsInRole("PracownikKlubu") && System.Web.HttpContext.Current.User.Identity.IsAuthenticated) 
+                {
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Zawodnicy", "Index", "Zawodnik")</li>
                         <li>@Html.ActionLink("Trenerzy", "Index", "Trener")</li>

@@ -48,6 +48,13 @@ namespace KlubPilkarski.Controllers
             return View("LeagueTable",tabelaLigowa.ToList());
         }
 
+        //GET: UpcomingMatches
+        public ActionResult UpcomingMatches()
+        {
+            var mecze = db.Mecz.Include(m => m.Klub).Include(m => m.Klub1).Include(m => m.Kolejka).Include(m => m.Sedzia).Include(m => m.Sezon).Include(m => m.Stadion).Where(m => m.Data > DateTime.Now && (m.Klub.Nazwa == "Manchester United F.C." || m.Klub1.Nazwa == "Manchester United F.C"));
+            return View(mecze.ToList());
+        }
+
         // GET: Mecz/Details/5
         public ActionResult Details(int? id)
         {

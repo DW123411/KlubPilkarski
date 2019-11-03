@@ -1,0 +1,52 @@
+﻿@model IEnumerable<KlubPilkarski.Models.Mecz>
+
+@{
+    ViewBag.Title = "Lista nadchodzących meczy";
+}
+
+<h2>Lista nadchodzących meczy</h2>
+
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Mecz
+            </th>
+            <th>
+                Stadion
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Mecz
+            </th>
+            <th>
+                Stadion
+            </th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Klub1.Nazwa) - @Html.DisplayFor(modelItem => item.Klub.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stadion)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
