@@ -1,0 +1,67 @@
+﻿@model IEnumerable<KlubPilkarski.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Lista użytkowników";
+}
+
+<h2>Lista użytkowników</h2>
+
+<p align="right">
+    <button type="button" class="btn btn-primary add-button"
+            onclick="location.href='@Url.Action("Register", "Account")'"
+            data-toggle="tooltip" data-placement="top" title="Dodaj użytkownika">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Dodaj użytkownika
+    </button>
+</p>
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th>
+                Nazwa użytkownika
+            </th>
+            <th>
+                Adres e-mail
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th>
+                Nazwa użytkownika
+            </th>
+            <th>
+                Adres e-mail
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm edit-button"
+                            onclick="location.href='@Url.Action("ChangePassword", "Users", new { id = item.Id })'"
+                            data-toggle="tooltip" data-placement="top" title="Zmień hasło">
+                        <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm delete-button"
+                            onclick="location.href='@Url.Action("Delete", "Users", new { id = item.Id })'"
+                            data-toggle="tooltip" data-placement="top" title="Usuń użytkownika">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

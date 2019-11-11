@@ -173,6 +173,7 @@
     <Compile Include="Controllers\SezonController.cs" />
     <Compile Include="Controllers\StadionController.cs" />
     <Compile Include="Controllers\TrenerController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ZawodnikController.cs" />
     <Compile Include="Controllers\ZawodnikMeczController.cs" />
     <Compile Include="Global.asax.cs">
@@ -453,6 +454,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Mecz\UpcomingMatches.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
