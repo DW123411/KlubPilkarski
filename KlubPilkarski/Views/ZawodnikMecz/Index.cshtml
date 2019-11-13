@@ -25,6 +25,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Pozycja)
             </th>
+            <th>
+                Ocena
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -38,6 +41,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Pozycja)
+            </th>
+            <th>
+                Ocena
             </th>
             <th></th>
         </tr>
@@ -53,6 +59,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Pozycja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FormaView) / 10
                 </td>
                 <td>
                     <button type="button" class="btn btn-warning btn-sm edit-button"

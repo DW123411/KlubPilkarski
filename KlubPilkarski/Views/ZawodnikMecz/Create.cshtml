@@ -72,14 +72,6 @@
 
         <div class="tab" id="brDiv">
             <div class="form-group">
-                @Html.LabelFor(model => model.StraconeBramki, "Stracone bramki", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.StraconeBramki, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.StraconeBramki, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
                 @Html.LabelFor(model => model.ObronaWyskok, "Obrona przez wyskok", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.ObronaWyskok, new { htmlAttributes = new { @class = "form-control" } })
@@ -266,6 +258,14 @@
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Wyrzuty, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Wyrzuty, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StraconeBramki, "Stracone bramki", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StraconeBramki, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StraconeBramki, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

@@ -15,6 +15,7 @@ namespace KlubPilkarski.Controllers
         private BazaDanychEntities db = new BazaDanychEntities();
 
         // GET: Mecz
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Index()
         {
             var mecz = db.Mecz.Include(m => m.Klub).Include(m => m.Klub1).Include(m => m.Kolejka).Include(m => m.Sedzia).Include(m => m.Sezon).Include(m => m.Stadion);
@@ -22,6 +23,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: AllInSeason
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult AllInSeason(int id)
         {
             var meczeWSezonie = db.Mecz.Include(m => m.Klub).Include(m => m.Klub1).Include(m => m.Kolejka).Include(m => m.Sedzia).Include(m => m.Sezon).Include(m => m.Stadion).Where(m => m.Sezon.IdS.Equals(id)).OrderBy(m => m.Data);
@@ -31,6 +33,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: LeagueTable
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult LeagueTable(int id)
         {
             var tabelaLigowa = db.TabelaLigowaSezon(id);
@@ -56,6 +59,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Mecz/Details/5
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -71,6 +75,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Mecz/Create
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Create()
         {
             var sezony =
@@ -109,6 +114,7 @@ namespace KlubPilkarski.Controllers
         // POST: Mecz/Create
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "PracownikKlubu")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdM,IdS,IdKolejka,Data,IdStadion,IdKlubGospodarze,IdKlubGoscie,BramkiGospodarze,BramkiGoscie,PunktyGospodarze,PunktyGoscie,FormaGospodarze,FormaGoscie,Opis,IdSedzia,Kibice")] Mecz mecz)
@@ -154,6 +160,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Mecz/Edit/5
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -202,6 +209,7 @@ namespace KlubPilkarski.Controllers
         // POST: Mecz/Edit/5
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "PracownikKlubu")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdM,IdS,IdKolejka,Data,IdStadion,IdKlubGospodarze,IdKlubGoscie,BramkiGospodarze,BramkiGoscie,PunktyGospodarze,PunktyGoscie,FormaGospodarze,FormaGoscie,Opis,IdSedzia,Kibice")] Mecz mecz)
@@ -246,6 +254,7 @@ namespace KlubPilkarski.Controllers
             return View(mecz);
         }
 
+        [Authorize(Roles = "PracownikKlubu")]
         public JsonResult FetchClubs(int id)
         {
             var kluby = db.Klub.Where(k => k.IdK != id).Select(k => new { IdK = k.IdK, Nazwa = k.Nazwa }).ToList();
@@ -253,6 +262,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Mecz/Delete/5
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -268,6 +278,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // POST: Mecz/Delete/5
+        [Authorize(Roles = "PracownikKlubu")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

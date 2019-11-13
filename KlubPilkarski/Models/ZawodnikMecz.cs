@@ -61,6 +61,13 @@ namespace KlubPilkarski.Models
         public Nullable<int> ObronaWysokiejPilki { get; set; }
         public Nullable<int> StraconeBramki { get; set; }
     
+        public double FormaView
+        {
+            get
+            {
+                return (double)Forma / 10;
+            }
+        }
         public virtual Mecz Mecz { get; set; }
         public virtual Zawodnik Zawodnik { get; set; }
     }

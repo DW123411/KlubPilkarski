@@ -169,6 +169,7 @@
     <Compile Include="Controllers\KolejkaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeczController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\SedziaController.cs" />
     <Compile Include="Controllers\SezonController.cs" />
     <Compile Include="Controllers\StadionController.cs" />
@@ -233,6 +234,7 @@
     <Compile Include="Models\Mecz.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PlayerRatingModel.cs" />
     <Compile Include="Models\Sedzia.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>

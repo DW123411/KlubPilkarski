@@ -15,6 +15,7 @@ namespace KlubPilkarski.Controllers
         private BazaDanychEntities db = new BazaDanychEntities();
 
         // GET: Zawodnik
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Index()
         {
             var zawodnik = db.Zawodnik.Include(z => z.Klub);
@@ -22,6 +23,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Zawodnik/Details/5
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Zawodnik/Create
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Create()
         {
             ViewBag.IdK = new SelectList(db.Klub, "IdK", "Nazwa");
@@ -46,6 +49,7 @@ namespace KlubPilkarski.Controllers
         // POST: Zawodnik/Create
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "PracownikKlubu")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdZ,Imie,Nazwisko,IdK,Opis")] Zawodnik zawodnik)
@@ -62,6 +66,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Zawodnik/Edit/5
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,6 +85,7 @@ namespace KlubPilkarski.Controllers
         // POST: Zawodnik/Edit/5
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "PracownikKlubu")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdZ,Imie,Nazwisko,IdK,Opis")] Zawodnik zawodnik)
@@ -95,6 +101,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Zawodnik/Delete/5
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,6 +117,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // POST: Zawodnik/Delete/5
+        [Authorize(Roles = "PracownikKlubu")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

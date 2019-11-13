@@ -15,12 +15,14 @@ namespace KlubPilkarski.Controllers
         private BazaDanychEntities db = new BazaDanychEntities();
 
         // GET: Kolejka
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Index()
         {
             return View(db.Kolejka.ToList());
         }
 
         // GET: Kolejka/Create
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Create()
         {
             return View();
@@ -29,6 +31,7 @@ namespace KlubPilkarski.Controllers
         // POST: Kolejka/Create
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "PracownikKlubu")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdKolejka,Nr,DataOd,DataDo")] Kolejka kolejka)
@@ -44,6 +47,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Kolejka/Edit/5
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -61,6 +65,7 @@ namespace KlubPilkarski.Controllers
         // POST: Kolejka/Edit/5
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "PracownikKlubu")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdKolejka,Nr,DataOd,DataDo")] Kolejka kolejka)
@@ -75,6 +80,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Kolejka/Delete/5
+        [Authorize(Roles = "PracownikKlubu")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -90,6 +96,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // POST: Kolejka/Delete/5
+        [Authorize(Roles = "PracownikKlubu")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
