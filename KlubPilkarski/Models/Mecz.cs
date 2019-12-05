@@ -11,7 +11,8 @@ namespace KlubPilkarski.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Mecz
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,6 +24,7 @@ namespace KlubPilkarski.Models
         public int IdM { get; set; }
         public int IdS { get; set; }
         public int IdKolejka { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public System.DateTime Data { get; set; }
         public int IdStadion { get; set; }
         public int IdKlubGospodarze { get; set; }

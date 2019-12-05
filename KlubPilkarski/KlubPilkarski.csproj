@@ -459,6 +459,9 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\ChangePassword.cshtml" />
+    <Content Include="Views\Mecz\UpcomingMatch.cshtml" />
+    <Content Include="Views\ZawodnikMecz\AllInMatch.cshtml" />
+    <Content Include="Views\Mecz\AllInMatchweek.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

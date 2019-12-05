@@ -88,9 +88,9 @@ namespace KlubPilkarski.Models
 
         public PlayerRatingModel()
         {
-            ParametrBramki = 10;
+            ParametrBramki = 15;
             ParametrAsysty = 5;
-            ParametrUtworzoneSzanse = 3;
+            ParametrUtworzoneSzanse = 2;
             ParametrStrzalyCelne = 2;
             ParametrStrzalyNiecelne = -2;
             ParametrStrzalyZablokowane = -1;
@@ -118,7 +118,7 @@ namespace KlubPilkarski.Models
             ParametrGlowkiWygrane = 1;
             ParametrGlowkiPrzegrane = -1;
             ParametrPrzejecia = 2;
-            ParametrSpalone = -0.5;
+            ParametrSpalone = -1;
             ParametrOdzyskanePilki = 2;
             ParametrPodaniaNieudane = -0.3;
             ParametrObronaWyskok = 1;

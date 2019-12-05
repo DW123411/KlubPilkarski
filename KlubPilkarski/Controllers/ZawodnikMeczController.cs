@@ -81,6 +81,8 @@ namespace KlubPilkarski.Controllers
                 zawodnikMecz.Forma = ratingController.CalculateRating(zawodnikMecz);
                 db.ZawodnikMecz.Add(zawodnikMecz);
                 db.SaveChanges();
+                MeczController mc = new MeczController();
+                mc.CalculateClubsRating(zawodnikMecz.IdM);
                 return RedirectToAction("Index");
             }
 
@@ -155,6 +157,8 @@ namespace KlubPilkarski.Controllers
                 zawodnikMecz.Forma = ratingController.CalculateRating(zawodnikMecz);
                 db.Entry(zawodnikMecz).State = EntityState.Modified;
                 db.SaveChanges();
+                MeczController mc = new MeczController();
+                mc.CalculateClubsRating(zawodnikMecz.IdM);
                 return RedirectToAction("Index");
             }
             var mecze =
@@ -212,6 +216,8 @@ namespace KlubPilkarski.Controllers
             ZawodnikMecz zawodnikMecz = db.ZawodnikMecz.Find(id);
             db.ZawodnikMecz.Remove(zawodnikMecz);
             db.SaveChanges();
+            MeczController mc = new MeczController();
+            mc.CalculateClubsRating(zawodnikMecz.IdM);
             return RedirectToAction("Index");
         }
 
@@ -228,6 +234,16 @@ namespace KlubPilkarski.Controllers
                 return RedirectToAction("Details/" + id);
             }
             return RedirectToAction("Details/"+id);
+        }
+
+        //GET: ZawodnikMecz/AllInMatch/5
+        [Authorize(Roles = "PracownikKlubu")]
+        public ActionResult AllInMatch(int id)
+        {
+            var wystepyWMeczu = db.ZawodnikMecz.Include(z => z.Zawodnik).Include(m => m.Mecz).Where(m => m.Mecz.IdM.Equals(id));
+            ViewBag.Match = id;
+            ViewBag.SelectedMatch = db.Mecz.Find(id);
+            return View(wystepyWMeczu.ToList());
         }
 
         protected override void Dispose(bool disposing)

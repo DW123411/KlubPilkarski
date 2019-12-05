@@ -73,7 +73,7 @@
 </table>
 
 <p>
-    @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+    @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated && System.Web.HttpContext.Current.User.IsInRole("PracownikKlubu"))
     {
         @Html.ActionLink("Powrót do listy meczy", "AllInSeason", new { id = ViewBag.Season }, new { @class = "btn btn-primary" })
     }

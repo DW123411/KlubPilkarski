@@ -20,8 +20,8 @@ namespace KlubPilkarski.Controllers
             double parametrObrona = 1;
             if (zawodnikMecz.Pozycja == "PO" || zawodnikMecz.Pozycja == "ŚO" || zawodnikMecz.Pozycja == "LO" || zawodnikMecz.Pozycja == "ŚPD")
             {
-                parametrAtak = 0.5;
-                parametrObrona = 1.5;
+                parametrAtak = 0.4;
+                parametrObrona = 1;
                 rating = CalculateStats(zawodnikMecz, parametrAtak, parametrObrona, false);
                 if(zawodnikMecz.OdbioryUdane == 0)
                 {
@@ -30,6 +30,21 @@ namespace KlubPilkarski.Controllers
                 if(zawodnikMecz.StraconeBramki != null)
                 {
                     rating += ratingModel.ParametrStraconeBramki * (double)zawodnikMecz.StraconeBramki;
+                }
+                if (zawodnikMecz.Bramki != null)
+                {
+                    if (zawodnikMecz.Bramki == 2)
+                    {
+                        rating += 10;
+                    }
+                    else if (zawodnikMecz.Bramki == 3)
+                    {
+                        rating += 15;
+                    }
+                    else if (zawodnikMecz.Bramki > 3)
+                    {
+                        rating += 25;
+                    }
                 }
                 if (rating > 100)
                 {
@@ -42,10 +57,34 @@ namespace KlubPilkarski.Controllers
                 return (int)rating;
             }else if (zawodnikMecz.Pozycja == "PP" || zawodnikMecz.Pozycja == "ŚP" || zawodnikMecz.Pozycja == "LP")
             {
+                parametrAtak = 0.7;
+                parametrObrona = 0.7;
                 rating = CalculateStats(zawodnikMecz, parametrAtak, parametrObrona, false);
                 if (zawodnikMecz.StraconeBramki != null)
                 {
-                    rating += 0.25 * ratingModel.ParametrStraconeBramki * (double)zawodnikMecz.StraconeBramki;
+                    rating += 0.75 * ratingModel.ParametrStraconeBramki * (double)zawodnikMecz.StraconeBramki;
+                }
+                if(zawodnikMecz.KluczowePodania != null && zawodnikMecz.KluczowePodania == 0)
+                {
+                    rating -= 5;
+                }
+                if(zawodnikMecz.Kontakty != null)
+                {
+                    rating -= 0.5 * ratingModel.ParametrKontakty * (double)zawodnikMecz.Kontakty;
+                }
+                if(zawodnikMecz.Bramki != null)
+                {
+                    if(zawodnikMecz.Bramki == 2)
+                    {
+                        rating += 10;
+                    }else if(zawodnikMecz.Bramki == 3)
+                    {
+                        rating += 15;
+                    }
+                    else  if(zawodnikMecz.Bramki > 3)
+                    {
+                        rating += 25;
+                    }
                 }
                 if (rating > 100)
                 {
@@ -69,14 +108,29 @@ namespace KlubPilkarski.Controllers
                     }
                     if (zawodnikMecz.StraconeBramki != null) 
                     {
-                        rating += 0.25 * ratingModel.ParametrStraconeBramki * (double)zawodnikMecz.StraconeBramki;
+                        rating += 0.75 * ratingModel.ParametrStraconeBramki * (double)zawodnikMecz.StraconeBramki;
                     }
                 }
                 else
                 {
                     if (zawodnikMecz.StraconeBramki != null)
                     {
-                        rating += 0.25 * ratingModel.ParametrStraconeBramki * (double)zawodnikMecz.StraconeBramki;
+                        rating += 0.75 * ratingModel.ParametrStraconeBramki * (double)zawodnikMecz.StraconeBramki;
+                    }
+                }
+                if (zawodnikMecz.Bramki != null)
+                {
+                    if (zawodnikMecz.Bramki == 2)
+                    {
+                        rating += 10;
+                    }
+                    else if (zawodnikMecz.Bramki == 3)
+                    {
+                        rating += 15;
+                    }
+                    else if (zawodnikMecz.Bramki > 3)
+                    {
+                        rating += 25;
                     }
                 }
                 if (rating > 100)
@@ -92,6 +146,10 @@ namespace KlubPilkarski.Controllers
             else
             {
                 rating = CalculateStats(zawodnikMecz, parametrAtak, parametrObrona, true);
+                if(zawodnikMecz.StraconeBramki != null && zawodnikMecz.StraconeBramki == 0)
+                {
+                    rating += 10;
+                }
                 if (rating > 100)
                 {
                     rating = 100;

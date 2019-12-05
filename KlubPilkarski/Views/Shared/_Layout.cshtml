@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/themes/base/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -40,6 +40,12 @@
                 {
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Użytkownicy", "Index", "Users")</li>
+                    </ul>
+                }
+                else if (System.Web.HttpContext.Current.User.IsInRole("Trener") && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Nadchodzący mecz", "UpcomingMatch", "Mecz")</li>
                     </ul>
                 }
                 @Html.Partial("_LoginPartial")

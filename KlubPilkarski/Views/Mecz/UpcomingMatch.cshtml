@@ -1,0 +1,2137 @@
+﻿@model IEnumerable<KlubPilkarski.Models.Zawodnik>
+
+@{
+    Dictionary<int, double> oceny = ViewBag.Oceny;
+    Dictionary<int, String> pozycja = ViewBag.Pozycja;
+    int tmpId = 0;
+    double tmp = 0;
+    ViewBag.Title = "Nadchodzący mecz";
+}
+
+<h2>Nadchodzący mecz</h2>
+
+<div>
+    <div align="center" class="row">
+        <div class="col-md-10 panel" id="brPrzeciwnik">
+            <p align="center">
+                @foreach (var item in Model)
+                {
+                    if (oceny.ContainsKey(item.IdZ))
+                    {
+                        if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "BR")
+                        {
+                            tmpId = item.IdZ;
+                            tmp = oceny[item.IdZ];
+                        }
+                    }
+                }
+                <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+            </p>
+            <p align="center">
+                @oceny[tmpId]
+                @{
+                    tmpId = 0;
+                }
+            </p>
+        </div>
+    </div>
+    @if (ViewBag.IloscSoPrzeciwnik == 2)
+    {
+        <div class="row">
+            <div class="col-md-2 panel" id="loPrzeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="so1Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszyObroncaPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="so2Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="so3Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚO" && item.IdZ != pierwszyObroncaPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="poPrzeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "PO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        </div>
+    }
+    else if (ViewBag.IloscSoPrzeciwnik == 3)
+    {
+        <div class="row">
+            <div class="col-md-2 panel" id="loPrzeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="so1Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszyObroncaPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="so2Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚO" && item.IdZ != pierwszyObroncaPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int drugiObroncaPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="so3Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚO" && item.IdZ != pierwszyObroncaPrzeciwnika && item.IdZ != drugiObroncaPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="poPrzeciwnik">
+                <p align="center"></p>
+            </div>
+        </div>
+    }
+    <div class="row">
+        @if (ViewBag.IloscSoPrzeciwnik == 3)
+        {
+            <div class="col-md-2 panel" id="loPrzeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="loPrzeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscSpdPrzeciwnik == 1)
+        {
+            <div class="col-md-2 panel" id="spd1Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spd2Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPD")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spd3Przeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        else if (ViewBag.IloscSpdPrzeciwnik == 2)
+        {
+            <div class="col-md-2 panel" id="spd1Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPD")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySpdPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spd2Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spd3Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPD" && item.IdZ != pierwszySpdPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="spd1Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spd2Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spd3Przeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscSoPrzeciwnik == 3)
+        {
+            <div class="col-md-2 panel" id="poPrzeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "PO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="poPrzeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+    </div>
+    <div class="row">
+        @if (ViewBag.IloscLpPrzeciwnik == 1)
+        {
+            <div class="col-md-2 panel" id="lpPrzeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="lpPrzeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscSpPrzeciwnik == 1)
+        {
+            <div class="col-md-2 panel" id="sp1Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="sp2Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="sp3Przeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        else if (ViewBag.IloscSpPrzeciwnik == 2)
+        {
+            <div class="col-md-2 panel" id="sp1Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySpPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="sp2Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="sp3Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySpPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else if (ViewBag.IloscSpPrzeciwnik == 3)
+        {
+            <div class="col-md-2 panel" id="sp1Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySpPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="sp2Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySpPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int drugiSpPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="sp3Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySpPrzeciwnika && item.IdZ != drugiSpPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="sp1Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="sp2Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="sp3Przeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscPpPrzeciwnik == 1)
+        {
+            <div class="col-md-2 panel" id="ppPrzeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "PP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="ppPrzeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+        @if (ViewBag.IloscSpoPrzeciwnik == 1)
+        {
+            <div class="col-md-2 panel" id="spo1Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spo2Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spo3Przeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        else if (ViewBag.IloscSpoPrzeciwnik == 2)
+        {
+            <div class="col-md-2 panel" id="spo1Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySpoPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spo2Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spo3Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPO" && item.IdZ != pierwszySpoPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else if (ViewBag.IloscSpoPrzeciwnik == 3)
+        {
+            <div class="col-md-2 panel" id="spo1Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySpoPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spo2Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPO" && item.IdZ != pierwszySpoPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int drugiSpoPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spo3Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPO" && item.IdZ != pierwszySpoPrzeciwnika && item.IdZ != drugiSpoPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="spo1Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spo2Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spo3Przeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+    </div>
+    <div class="row">
+        @if (ViewBag.IloscLsPrzeciwnik == 1)
+        {
+            <div class="col-md-2 panel" id="lsPrzeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LS")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="lsPrzeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+        @if (ViewBag.IloscCnPrzeciwnik == 1)
+        {
+            <div class="col-md-2 panel" id="cnPrzeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "CN")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="cnPrzeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+        @if (ViewBag.IloscPsPrzeciwnik == 1)
+        {
+            <div class="col-md-2 panel" id="psPrzeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "PS")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="psPrzeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+        @if (ViewBag.IloscNPrzeciwnik == 1)
+        {
+            <div class="col-md-2 panel" id="n1Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="n2Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "N")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="n3Przeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        else if (ViewBag.IloscNPrzeciwnik == 2)
+        {
+            <div class="col-md-2 panel" id="n1Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "N")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszyNPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="n2Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="n3Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "N" && item.IdZ != pierwszyNPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else if (ViewBag.IloscNPrzeciwnik == 3)
+        {
+            <div class="col-md-2 panel" id="n1Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "N")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszyNPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="n2Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "N" && item.IdZ != pierwszyNPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int drugiNPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="n3Przeciwnik">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "N" && item.IdZ != pierwszyNPrzeciwnika && item.IdZ != drugiNPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="n1Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="n2Przeciwnik">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="n3Przeciwnik">
+                <p align="center"></p>
+            </div>
+        }
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 panel"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+        @if (ViewBag.IloscN == 1)
+        {
+            <div class="col-md-2 panel" id="n1">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="n2">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "N")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="n3">
+                <p align="center"></p>
+            </div>
+        }
+        else if (ViewBag.IloscN == 2)
+        {
+            <div class="col-md-2 panel" id="n1">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "N")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszyN = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="n2">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="n3">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "N" && item.IdZ != pierwszyN)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else if (ViewBag.IloscN == 3)
+        {
+            <div class="col-md-2 panel" id="n1">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "N")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszyN = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="n2">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "N" && item.IdZ != pierwszyN)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int drugiN = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="n3">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "N" && item.IdZ != pierwszyN && item.IdZ != drugiN)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="n1">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="n2">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="n3">
+                <p align="center"></p>
+            </div>
+        }
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+    </div>
+    <div class="row">
+        @if (ViewBag.IloscLs == 1)
+        {
+            <div class="col-md-2 panel" id="ls">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "LS")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="ls">
+                <p align="center"></p>
+            </div>
+        }
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+        @if (ViewBag.IloscCn == 1)
+        {
+            <div class="col-md-2 panel" id="cn">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "CN")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="cn">
+                <p align="center"></p>
+            </div>
+        }
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+        @if (ViewBag.IloscPs == 1)
+        {
+            <div class="col-md-2 panel" id="ps">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "PS")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="ps">
+                <p align="center"></p>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+        @if (ViewBag.IloscSpo == 1)
+        {
+            <div class="col-md-2 panel" id="spo1">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spo2">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚPO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spo3">
+                <p align="center"></p>
+            </div>
+        }
+        else if (ViewBag.IloscSpo == 2)
+        {
+            <div class="col-md-2 panel" id="spo1">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚPO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySpo = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spo2">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spo3">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚPO" && item.IdZ != pierwszySpo)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else if (ViewBag.IloscSpo == 3)
+        {
+            <div class="col-md-2 panel" id="spo1">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚPO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySpo = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spo2">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚPO" && item.IdZ != pierwszySpo)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int drugiSpo = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spo3">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚPO" && item.IdZ != pierwszySpo && item.IdZ != drugiSpo)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="spo1">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spo2">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spo3">
+                <p align="center"></p>
+            </div>
+        }
+        <div class="col-md-2 panel">
+            <p align="center"></p>
+        </div>
+    </div>
+    <div class="row">
+        @if (ViewBag.IloscLp == 1)
+        {
+            <div class="col-md-2 panel" id="lp">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "LP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="lp">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscSp == 1)
+        {
+            <div class="col-md-2 panel" id="sp1">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="sp2">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="sp3">
+                <p align="center"></p>
+            </div>
+        }
+        else if (ViewBag.IloscSp == 2)
+        {
+            <div class="col-md-2 panel" id="sp1">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySp = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="sp2">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="sp3">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySp)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else if (ViewBag.IloscSp == 3)
+        {
+            <div class="col-md-2 panel" id="sp1">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySp = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="sp2">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySp)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int drugiSp = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="sp3">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySp && item.IdZ != drugiSp)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="sp1">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="sp2">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="sp3">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscPp == 1)
+        {
+            <div class="col-md-2 panel" id="pp">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "PP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="pp">
+                <p align="center"></p>
+            </div>
+        }
+    </div>
+    <div class="row">
+        @if (ViewBag.IloscSo == 3)
+        {
+            <div class="col-md-2 panel" id="lo">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "LO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="lo">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscSpd == 1)
+        {
+            <div class="col-md-2 panel" id="spd1">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spd2">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚPD")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spd3">
+                <p align="center"></p>
+            </div>
+        }
+        else if (ViewBag.IloscSpd == 2)
+        {
+            <div class="col-md-2 panel" id="spd1">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚPD")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySpd = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="spd2">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spd3">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚPD" && item.IdZ != pierwszySpd)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="spd1">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spd2">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="spd3">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscSo == 3)
+        {
+            <div class="col-md-2 panel" id="po">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "PO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2 panel" id="po">
+                <p align="center"></p>
+            </div>
+        }
+    </div>
+    @if (ViewBag.IloscSo == 2)
+    {
+        <div class="row">
+            <div class="col-md-2 panel" id="lo">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "LO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="so1">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszyObronca = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="so2">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="so3">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚO" && item.IdZ != pierwszyObronca)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="po">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "PO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        </div>
+    }
+    else if (ViewBag.IloscSo == 3)
+    {
+        <div class="row">
+            <div class="col-md-2 panel" id="lo">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2 panel" id="so1">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszyObronca = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="so2">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚO" && item.IdZ != pierwszyObronca)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int drugiObronca = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="so3">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "ŚO" && item.IdZ != pierwszyObronca && item.IdZ != drugiObronca)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2 panel" id="po">
+                <p align="center"></p>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-10 panel" id="br">
+            <p align="center">
+                @foreach (var item in Model)
+                {
+                    if (oceny.ContainsKey(item.IdZ))
+                    {
+                        if (item.Klub.Nazwa == ViewBag.Klub && pozycja[item.IdZ] == "BR")
+                        {
+                            tmpId = item.IdZ;
+                            tmp = oceny[item.IdZ];
+                        }
+                    }
+                }
+                <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+            </p>
+            <p align="center">
+                @oceny[tmpId]
+                @{
+                    tmpId = 0;
+                }
+            </p>
+        </div>
+    </div>
+</div>
