@@ -10,9 +10,16 @@
 
 <h2>Nadchodzący mecz</h2>
 
-<div>
-    <div align="center" class="row">
-        <div class="col-md-10 panel" id="brPrzeciwnik">
+<div style="background: #118518; margin: 0 auto;">
+    <div align="center" class="row" style="margin-left: 15%;">
+        <div class="col-md-10" style="background: #118518; color: antiquewhite;">
+            <p align="center">
+                <strong>@ViewBag.KlubPrzeciwnika</strong>
+            </p>
+        </div>
+    </div>
+    <div align="center" class="row" style="margin-left: 15%;">
+        <div class="col-md-10 panel" id="brPrzeciwnik" style="background: #118518; border-left: solid; border-bottom: solid; border-right: solid; border-color: white; color: antiquewhite;">
             <p align="center">
                 @foreach (var item in Model)
                 {
@@ -37,80 +44,8 @@
     </div>
     @if (ViewBag.IloscSoPrzeciwnik == 2)
     {
-        <div class="row">
-            <div class="col-md-2 panel" id="loPrzeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LO")
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-            <div class="col-md-2 panel" id="so1Przeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚO")
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @{
-                        int pierwszyObroncaPrzeciwnika = tmpId;
-                    }
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-            <div class="col-md-2 panel" id="so2Przeciwnik">
-                <p align="center"></p>
-            </div>
-            <div class="col-md-2 panel" id="so3Przeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚO" && item.IdZ != pierwszyObroncaPrzeciwnika)
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-            <div class="col-md-2 panel" id="poPrzeciwnik">
+        <div class="row" style="margin-left: 15%;">
+            <div class="col-md-2" id="poPrzeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -132,15 +67,7 @@
                     }
                 </p>
             </div>
-        </div>
-    }
-    else if (ViewBag.IloscSoPrzeciwnik == 3)
-    {
-        <div class="row">
-            <div class="col-md-2 panel" id="loPrzeciwnik">
-                <p align="center"></p>
-            </div>
-            <div class="col-md-2 panel" id="so1Przeciwnik">
+            <div class="col-md-2" id="so1Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -165,7 +92,87 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="so2Przeciwnik">
+            <div class="col-md-2" id="so2Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2" id="so3Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚO" && item.IdZ != pierwszyObroncaPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2" id="loPrzeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        </div>
+    }
+    else if (ViewBag.IloscSoPrzeciwnik == 3)
+    {
+        <div class="row" style="margin-left: 15%;">
+            <div class="col-md-2" id="poPrzeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2" id="so1Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszyObroncaPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2" id="so2Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -190,7 +197,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="so3Przeciwnik">
+            <div class="col-md-2" id="so3Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -212,142 +219,15 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="poPrzeciwnik">
+            <div class="col-md-2" id="loPrzeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         </div>
     }
-    <div class="row">
+    <div class="row" style="margin-left: 15%;">
         @if (ViewBag.IloscSoPrzeciwnik == 3)
         {
-            <div class="col-md-2 panel" id="loPrzeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LO")
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-        }
-        else
-        {
-            <div class="col-md-2 panel" id="loPrzeciwnik">
-                <p align="center"></p>
-            </div>
-        }
-        @if (ViewBag.IloscSpdPrzeciwnik == 1)
-        {
-            <div class="col-md-2 panel" id="spd1Przeciwnik">
-                <p align="center"></p>
-            </div>
-            <div class="col-md-2 panel" id="spd2Przeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPD")
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-            <div class="col-md-2 panel" id="spd3Przeciwnik">
-                <p align="center"></p>
-            </div>
-        }
-        else if (ViewBag.IloscSpdPrzeciwnik == 2)
-        {
-            <div class="col-md-2 panel" id="spd1Przeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPD")
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @{
-                        int pierwszySpdPrzeciwnika = tmpId;
-                    }
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-            <div class="col-md-2 panel" id="spd2Przeciwnik">
-                <p align="center"></p>
-            </div>
-            <div class="col-md-2 panel" id="spd3Przeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPD" && item.IdZ != pierwszySpdPrzeciwnika)
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-        }
-        else
-        {
-            <div class="col-md-2 panel" id="spd1Przeciwnik">
-                <p align="center"></p>
-            </div>
-            <div class="col-md-2 panel" id="spd2Przeciwnik">
-                <p align="center"></p>
-            </div>
-            <div class="col-md-2 panel" id="spd3Przeciwnik">
-                <p align="center"></p>
-            </div>
-        }
-        @if (ViewBag.IloscSoPrzeciwnik == 3)
-        {
-            <div class="col-md-2 panel" id="poPrzeciwnik">
+            <div class="col-md-2" id="poPrzeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -372,217 +252,142 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="poPrzeciwnik">
+            <div class="col-md-2" id="poPrzeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscSpdPrzeciwnik == 1)
+        {
+            <div class="col-md-2" id="spd1Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2" id="spd2Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPD")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2" id="spd3Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+        }
+        else if (ViewBag.IloscSpdPrzeciwnik == 2)
+        {
+            <div class="col-md-2" id="spd1Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPD")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySpdPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2" id="spd2Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2" id="spd3Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚPD" && item.IdZ != pierwszySpdPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2" id="spd1Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2" id="spd2Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2" id="spd3Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscSoPrzeciwnik == 3)
+        {
+            <div class="col-md-2" id="loPrzeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LO")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2" id="loPrzeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
     </div>
-    <div class="row">
-        @if (ViewBag.IloscLpPrzeciwnik == 1)
-        {
-            <div class="col-md-2 panel" id="lpPrzeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LP")
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-        }
-        else
-        {
-            <div class="col-md-2 panel" id="lpPrzeciwnik">
-                <p align="center"></p>
-            </div>
-        }
-        @if (ViewBag.IloscSpPrzeciwnik == 1)
-        {
-            <div class="col-md-2 panel" id="sp1Przeciwnik">
-                <p align="center"></p>
-            </div>
-            <div class="col-md-2 panel" id="sp2Przeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-            <div class="col-md-2 panel" id="sp3Przeciwnik">
-                <p align="center"></p>
-            </div>
-        }
-        else if (ViewBag.IloscSpPrzeciwnik == 2)
-        {
-            <div class="col-md-2 panel" id="sp1Przeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @{
-                        int pierwszySpPrzeciwnika = tmpId;
-                    }
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-            <div class="col-md-2 panel" id="sp2Przeciwnik">
-                <p align="center"></p>
-            </div>
-            <div class="col-md-2 panel" id="sp3Przeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySpPrzeciwnika)
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-        }
-        else if (ViewBag.IloscSpPrzeciwnik == 3)
-        {
-            <div class="col-md-2 panel" id="sp1Przeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @{
-                        int pierwszySpPrzeciwnika = tmpId;
-                    }
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-            <div class="col-md-2 panel" id="sp2Przeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySpPrzeciwnika)
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @{
-                        int drugiSpPrzeciwnika = tmpId;
-                    }
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-            <div class="col-md-2 panel" id="sp3Przeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySpPrzeciwnika && item.IdZ != drugiSpPrzeciwnika)
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-        }
-        else
-        {
-            <div class="col-md-2 panel" id="sp1Przeciwnik">
-                <p align="center"></p>
-            </div>
-            <div class="col-md-2 panel" id="sp2Przeciwnik">
-                <p align="center"></p>
-            </div>
-            <div class="col-md-2 panel" id="sp3Przeciwnik">
-                <p align="center"></p>
-            </div>
-        }
+    <div class="row" style="margin-left: 15%;">
         @if (ViewBag.IloscPpPrzeciwnik == 1)
         {
-            <div class="col-md-2 panel" id="ppPrzeciwnik">
+            <div class="col-md-2" id="ppPrzeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -607,21 +412,223 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="ppPrzeciwnik">
+            <div class="col-md-2" id="ppPrzeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscSpPrzeciwnik == 1)
+        {
+            <div class="col-md-2" id="sp1Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2" id="sp2Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2" id="sp3Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+        }
+        else if (ViewBag.IloscSpPrzeciwnik == 2)
+        {
+            <div class="col-md-2" id="sp1Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySpPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2" id="sp2Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2" id="sp3Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySpPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else if (ViewBag.IloscSpPrzeciwnik == 3)
+        {
+            <div class="col-md-2" id="sp1Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int pierwszySpPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2" id="sp2Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySpPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @{
+                        int drugiSpPrzeciwnika = tmpId;
+                    }
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+            <div class="col-md-2" id="sp3Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "ŚP" && item.IdZ != pierwszySpPrzeciwnika && item.IdZ != drugiSpPrzeciwnika)
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2" id="sp1Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2" id="sp2Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+            <div class="col-md-2" id="sp3Przeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+        }
+        @if (ViewBag.IloscLpPrzeciwnik == 1)
+        {
+            <div class="col-md-2" id="lpPrzeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LP")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2" id="lpPrzeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
     </div>
-    <div class="row">
-        <div class="col-md-2 panel">
+    <div class="row" style="margin-left: 15%;">
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
             <p align="center"></p>
         </div>
         @if (ViewBag.IloscSpoPrzeciwnik == 1)
         {
-            <div class="col-md-2 panel" id="spo1Przeciwnik">
+            <div class="col-md-2" id="spo1Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spo2Przeciwnik">
+            <div class="col-md-2" id="spo2Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -643,13 +650,13 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="spo3Przeciwnik">
+            <div class="col-md-2" id="spo3Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
         else if (ViewBag.IloscSpoPrzeciwnik == 2)
         {
-            <div class="col-md-2 panel" id="spo1Przeciwnik">
+            <div class="col-md-2" id="spo1Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -674,10 +681,10 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="spo2Przeciwnik">
+            <div class="col-md-2" id="spo2Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spo3Przeciwnik">
+            <div class="col-md-2" id="spo3Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -702,7 +709,7 @@
         }
         else if (ViewBag.IloscSpoPrzeciwnik == 3)
         {
-            <div class="col-md-2 panel" id="spo1Przeciwnik">
+            <div class="col-md-2" id="spo1Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -727,7 +734,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="spo2Przeciwnik">
+            <div class="col-md-2" id="spo2Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -752,7 +759,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="spo3Przeciwnik">
+            <div class="col-md-2" id="spo3Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -777,92 +784,24 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="spo1Przeciwnik">
+            <div class="col-md-2" id="spo1Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spo2Przeciwnik">
+            <div class="col-md-2" id="spo2Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spo3Przeciwnik">
+            <div class="col-md-2" id="spo3Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
-        <div class="col-md-2 panel">
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
             <p align="center"></p>
         </div>
     </div>
-    <div class="row">
-        @if (ViewBag.IloscLsPrzeciwnik == 1)
-        {
-            <div class="col-md-2 panel" id="lsPrzeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LS")
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-        }
-        else
-        {
-            <div class="col-md-2 panel" id="lsPrzeciwnik">
-                <p align="center"></p>
-            </div>
-        }
-        <div class="col-md-2 panel">
-            <p align="center"></p>
-        </div>
-        @if (ViewBag.IloscCnPrzeciwnik == 1)
-        {
-            <div class="col-md-2 panel" id="cnPrzeciwnik">
-                <p align="center">
-                    @foreach (var item in Model)
-                    {
-                        if (oceny.ContainsKey(item.IdZ))
-                        {
-                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "CN")
-                            {
-                                tmpId = item.IdZ;
-                                tmp = oceny[item.IdZ];
-                            }
-                        }
-                    }
-                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
-                </p>
-                <p align="center">
-                    @oceny[tmpId]
-                    @{
-                        tmpId = 0;
-                    }
-                </p>
-            </div>
-        }
-        else
-        {
-            <div class="col-md-2 panel" id="cnPrzeciwnik">
-                <p align="center"></p>
-            </div>
-        }
-        <div class="col-md-2 panel">
-            <p align="center"></p>
-        </div>
+    <div class="row" style="margin-left: 15%;">
         @if (ViewBag.IloscPsPrzeciwnik == 1)
         {
-            <div class="col-md-2 panel" id="psPrzeciwnik">
+            <div class="col-md-2" id="psPrzeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -887,21 +826,89 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="psPrzeciwnik">
+            <div class="col-md-2" id="psPrzeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+        }
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
+            <p align="center"></p>
+        </div>
+        @if (ViewBag.IloscCnPrzeciwnik == 1)
+        {
+            <div class="col-md-2" id="cnPrzeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "CN")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2" id="cnPrzeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center"></p>
+            </div>
+        }
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
+            <p align="center"></p>
+        </div>
+        @if (ViewBag.IloscLsPrzeciwnik == 1)
+        {
+            <div class="col-md-2" id="lsPrzeciwnik" style="background: #118518; color: antiquewhite;">
+                <p align="center">
+                    @foreach (var item in Model)
+                    {
+                        if (oceny.ContainsKey(item.IdZ))
+                        {
+                            if (item.Klub.Nazwa != ViewBag.Klub && pozycja[item.IdZ] == "LS")
+                            {
+                                tmpId = item.IdZ;
+                                tmp = oceny[item.IdZ];
+                            }
+                        }
+                    }
+                    <strong>@Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Imie @Model.Where(z => z.IdZ == tmpId).FirstOrDefault().Nazwisko</strong>
+                </p>
+                <p align="center">
+                    @oceny[tmpId]
+                    @{
+                        tmpId = 0;
+                    }
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-2" id="lsPrzeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
     </div>
-    <div class="row">
-        <div class="col-md-2 panel">
+    <div class="row" style="margin-left: 15%;">
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
             <p align="center"></p>
         </div>
         @if (ViewBag.IloscNPrzeciwnik == 1)
         {
-            <div class="col-md-2 panel" id="n1Przeciwnik">
+            <div class="col-md-2" id="n1Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="n2Przeciwnik">
+            <div class="col-md-2" id="n2Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -923,13 +930,13 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="n3Przeciwnik">
+            <div class="col-md-2" id="n3Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
         else if (ViewBag.IloscNPrzeciwnik == 2)
         {
-            <div class="col-md-2 panel" id="n1Przeciwnik">
+            <div class="col-md-2" id="n1Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -954,10 +961,10 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="n2Przeciwnik">
+            <div class="col-md-2" id="n2Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="n3Przeciwnik">
+            <div class="col-md-2" id="n3Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -982,7 +989,7 @@
         }
         else if (ViewBag.IloscNPrzeciwnik == 3)
         {
-            <div class="col-md-2 panel" id="n1Przeciwnik">
+            <div class="col-md-2" id="n1Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1007,7 +1014,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="n2Przeciwnik">
+            <div class="col-md-2" id="n2Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1032,7 +1039,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="n3Przeciwnik">
+            <div class="col-md-2" id="n3Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1057,33 +1064,33 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="n1Przeciwnik">
+            <div class="col-md-2" id="n1Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="n2Przeciwnik">
+            <div class="col-md-2" id="n2Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="n3Przeciwnik">
+            <div class="col-md-2" id="n3Przeciwnik" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
-        <div class="col-md-2 panel">
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
             <p align="center"></p>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-left: 15%;">
         <div class="col-md-10 panel"></div>
     </div>
-    <div class="row">
-        <div class="col-md-2 panel">
+    <div class="row" style="margin-left: 15%;">
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
             <p align="center"></p>
         </div>
         @if (ViewBag.IloscN == 1)
         {
-            <div class="col-md-2 panel" id="n1">
+            <div class="col-md-2" id="n1" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="n2">
+            <div class="col-md-2" id="n2" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1105,13 +1112,13 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="n3">
+            <div class="col-md-2" id="n3" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
         else if (ViewBag.IloscN == 2)
         {
-            <div class="col-md-2 panel" id="n1">
+            <div class="col-md-2" id="n1" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1136,10 +1143,10 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="n2">
+            <div class="col-md-2" id="n2" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="n3">
+            <div class="col-md-2" id="n3" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1164,7 +1171,7 @@
         }
         else if (ViewBag.IloscN == 3)
         {
-            <div class="col-md-2 panel" id="n1">
+            <div class="col-md-2" id="n1" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1189,7 +1196,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="n2">
+            <div class="col-md-2" id="n2" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1214,7 +1221,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="n3">
+            <div class="col-md-2" id="n3" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1239,24 +1246,24 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="n1">
+            <div class="col-md-2" id="n1" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="n2">
+            <div class="col-md-2" id="n2" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="n3">
+            <div class="col-md-2" id="n3" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
-        <div class="col-md-2 panel">
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
             <p align="center"></p>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-left: 15%;">
         @if (ViewBag.IloscLs == 1)
         {
-            <div class="col-md-2 panel" id="ls">
+            <div class="col-md-2" id="ls" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1281,16 +1288,16 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="ls">
+            <div class="col-md-2" id="ls" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
-        <div class="col-md-2 panel">
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
             <p align="center"></p>
         </div>
         @if (ViewBag.IloscCn == 1)
         {
-            <div class="col-md-2 panel" id="cn">
+            <div class="col-md-2" id="cn" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1315,16 +1322,16 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="cn">
+            <div class="col-md-2" id="cn" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
-        <div class="col-md-2 panel">
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
             <p align="center"></p>
         </div>
         @if (ViewBag.IloscPs == 1)
         {
-            <div class="col-md-2 panel" id="ps">
+            <div class="col-md-2" id="ps" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1349,21 +1356,21 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="ps">
+            <div class="col-md-2" id="ps" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
     </div>
-    <div class="row">
-        <div class="col-md-2 panel">
+    <div class="row" style="margin-left: 15%;">
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
             <p align="center"></p>
         </div>
         @if (ViewBag.IloscSpo == 1)
         {
-            <div class="col-md-2 panel" id="spo1">
+            <div class="col-md-2" id="spo1" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spo2">
+            <div class="col-md-2" id="spo2" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1385,13 +1392,13 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="spo3">
+            <div class="col-md-2" id="spo3" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
         else if (ViewBag.IloscSpo == 2)
         {
-            <div class="col-md-2 panel" id="spo1">
+            <div class="col-md-2" id="spo1" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1416,10 +1423,10 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="spo2">
+            <div class="col-md-2" id="spo2" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spo3">
+            <div class="col-md-2" id="spo3" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1444,7 +1451,7 @@
         }
         else if (ViewBag.IloscSpo == 3)
         {
-            <div class="col-md-2 panel" id="spo1">
+            <div class="col-md-2" id="spo1" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1469,7 +1476,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="spo2">
+            <div class="col-md-2" id="spo2" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1494,7 +1501,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="spo3">
+            <div class="col-md-2" id="spo3" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1519,24 +1526,24 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="spo1">
+            <div class="col-md-2" id="spo1" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spo2">
+            <div class="col-md-2" id="spo2" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spo3">
+            <div class="col-md-2" id="spo3" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
-        <div class="col-md-2 panel">
+        <div class="col-md-2" style="background: #118518; color: antiquewhite;">
             <p align="center"></p>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-left: 15%;">
         @if (ViewBag.IloscLp == 1)
         {
-            <div class="col-md-2 panel" id="lp">
+            <div class="col-md-2" id="lp" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1561,16 +1568,16 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="lp">
+            <div class="col-md-2" id="lp" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
         @if (ViewBag.IloscSp == 1)
         {
-            <div class="col-md-2 panel" id="sp1">
+            <div class="col-md-2" id="sp1" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="sp2">
+            <div class="col-md-2" id="sp2" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1592,13 +1599,13 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="sp3">
+            <div class="col-md-2" id="sp3" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
         else if (ViewBag.IloscSp == 2)
         {
-            <div class="col-md-2 panel" id="sp1">
+            <div class="col-md-2" id="sp1" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1623,10 +1630,10 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="sp2">
+            <div class="col-md-2" id="sp2" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="sp3">
+            <div class="col-md-2" id="sp3" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1651,7 +1658,7 @@
         }
         else if (ViewBag.IloscSp == 3)
         {
-            <div class="col-md-2 panel" id="sp1">
+            <div class="col-md-2" id="sp1" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1676,7 +1683,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="sp2">
+            <div class="col-md-2" id="sp2" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1701,7 +1708,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="sp3">
+            <div class="col-md-2" id="sp3" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1726,19 +1733,19 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="sp1">
+            <div class="col-md-2" id="sp1" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="sp2">
+            <div class="col-md-2" id="sp2" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="sp3">
+            <div class="col-md-2" id="sp3" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
         @if (ViewBag.IloscPp == 1)
         {
-            <div class="col-md-2 panel" id="pp">
+            <div class="col-md-2" id="pp" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1763,15 +1770,15 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="pp">
+            <div class="col-md-2" id="pp" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
     </div>
-    <div class="row">
+    <div class="row" style="margin-left: 15%;">
         @if (ViewBag.IloscSo == 3)
         {
-            <div class="col-md-2 panel" id="lo">
+            <div class="col-md-2" id="lo" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1796,16 +1803,16 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="lo">
+            <div class="col-md-2" id="lo" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
         @if (ViewBag.IloscSpd == 1)
         {
-            <div class="col-md-2 panel" id="spd1">
+            <div class="col-md-2" id="spd1" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spd2">
+            <div class="col-md-2" id="spd2" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1827,13 +1834,13 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="spd3">
+            <div class="col-md-2" id="spd3" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
         else if (ViewBag.IloscSpd == 2)
         {
-            <div class="col-md-2 panel" id="spd1">
+            <div class="col-md-2" id="spd1" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1858,10 +1865,10 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="spd2">
+            <div class="col-md-2" id="spd2" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spd3">
+            <div class="col-md-2" id="spd3" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1886,19 +1893,19 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="spd1">
+            <div class="col-md-2" id="spd1" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spd2">
+            <div class="col-md-2" id="spd2" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="spd3">
+            <div class="col-md-2" id="spd3" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
         @if (ViewBag.IloscSo == 3)
         {
-            <div class="col-md-2 panel" id="po">
+            <div class="col-md-2" id="po" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1923,15 +1930,15 @@
         }
         else
         {
-            <div class="col-md-2 panel" id="po">
+            <div class="col-md-2" id="po" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         }
     </div>
     @if (ViewBag.IloscSo == 2)
     {
-        <div class="row">
-            <div class="col-md-2 panel" id="lo">
+        <div class="row" style="margin-left: 15%;">
+            <div class="col-md-2" id="lo" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1953,7 +1960,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="so1">
+            <div class="col-md-2" id="so1" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -1978,10 +1985,10 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="so2">
+            <div class="col-md-2" id="so2" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="so3">
+            <div class="col-md-2" id="so3" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -2003,7 +2010,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="po">
+            <div class="col-md-2" id="po" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -2029,11 +2036,11 @@
     }
     else if (ViewBag.IloscSo == 3)
     {
-        <div class="row">
-            <div class="col-md-2 panel" id="lo">
+        <div class="row" style="margin-left: 15%;">
+            <div class="col-md-2" id="lo" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
-            <div class="col-md-2 panel" id="so1">
+            <div class="col-md-2" id="so1" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -2058,7 +2065,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="so2">
+            <div class="col-md-2" id="so2" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -2083,7 +2090,7 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="so3">
+            <div class="col-md-2" id="so3" style="background: #118518; color: antiquewhite;">
                 <p align="center">
                     @foreach (var item in Model)
                     {
@@ -2105,13 +2112,13 @@
                     }
                 </p>
             </div>
-            <div class="col-md-2 panel" id="po">
+            <div class="col-md-2" id="po" style="background: #118518; color: antiquewhite;">
                 <p align="center"></p>
             </div>
         </div>
     }
-    <div class="row">
-        <div class="col-md-10 panel" id="br">
+    <div class="row" style="margin-left: 15%; margin-bottom: 0;">
+        <div class="col-md-10 panel" id="br" style="background: #118518; border-left: solid; border-top: solid; border-right: solid; border-color: white; color: antiquewhite;">
             <p align="center">
                 @foreach (var item in Model)
                 {
@@ -2133,5 +2140,64 @@
                 }
             </p>
         </div>
+    </div>
+    <div align="center" class="row" style="margin-left: 15%;">
+        <div class="col-md-10" style="background: #118518; color: antiquewhite;">
+            <p align="center">
+                <strong>@ViewBag.Klub</strong>
+            </p>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row" style="margin-left: 15%;">
+    <div class="col-md-10 panel">
+        <p align="center">
+            <strong>Średnia ocena obrońców (@ViewBag.KlubPrzeciwnika): </strong>@String.Format("{0:0.0}", ViewBag.OcenyFormacjiPrzeciwnik[0])
+
+        </p>
+    </div>
+</div>
+<div class="row" style="margin-left: 15%;">
+    <div class="col-md-10 panel">
+        <p align="center">
+            <strong>Średnia ocena pomocników (@ViewBag.KlubPrzeciwnika): </strong>@String.Format("{0:0.0}", ViewBag.OcenyFormacjiPrzeciwnik[1])
+
+        </p>
+    </div>
+</div>
+<div class="row" style="margin-left: 15%;">
+    <div class="col-md-10 panel">
+        <p align="center">
+            <strong>Średnia ocena napastników (@ViewBag.KlubPrzeciwnika): </strong>@String.Format("{0:0.0}", ViewBag.OcenyFormacjiPrzeciwnik[2])
+
+        </p>
+    </div>
+</div>
+
+<div class="row" style="margin-left: 15%;">
+    <div class="col-md-10 panel">
+        <p align="center">
+            <strong>Średnia ocena obrońców (@ViewBag.Klub): </strong>@String.Format("{0:0.0}", ViewBag.OcenyFormacji[0])
+
+        </p>
+    </div>
+</div>
+<div class="row" style="margin-left: 15%;">
+    <div class="col-md-10 panel">
+        <p align="center">
+            <strong>Średnia ocena pomocników (@ViewBag.Klub): </strong>@String.Format("{0:0.0}", ViewBag.OcenyFormacji[1])
+
+        </p>
+    </div>
+</div>
+<div class="row" style="margin-left: 15%;">
+    <div class="col-md-10 panel">
+        <p align="center">
+            <strong>Średnia ocena napastników (@ViewBag.Klub): </strong>@String.Format("{0:0.0}", ViewBag.OcenyFormacji[2])
+
+        </p>
     </div>
 </div>

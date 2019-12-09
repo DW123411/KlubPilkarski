@@ -19,7 +19,11 @@
             }
             else
             {
-                @Html.ActionLink("Utwórz", "SetPassword")
+                <button type="button" class="btn btn-primary add-button"
+                        onclick="location.href='@Url.Action("Utwórz", "SetPassword")'"
+                        data-toggle="tooltip" data-placement="top" title="Utwórz">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Utwórz
+                </button>
             }
             ]
         </dd>
@@ -81,7 +85,7 @@
                         <input type="submit" value="Włącz" class="btn btn-link" />
                         </text>
                     }
-                }*@
-        </dd>
+                }
+        </dd>*@
     </dl>
 </div>

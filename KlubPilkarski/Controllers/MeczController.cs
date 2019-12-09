@@ -460,7 +460,7 @@ namespace KlubPilkarski.Controllers
             {
                 foreach (ZawodnikMecz zawodnikMecz in wystepyZawodnikow)
                 {
-                    if (zawodnikMecz.Zawodnik.IdZ == zawodnik.IdZ)
+                    if (zawodnikMecz.Zawodnik.IdZ == zawodnik.IdZ && zawodnikMecz.MinutyDo - zawodnikMecz.MinutyOd > 20)
                     {
                         if (zawodnikMecz.Pozycja == "BR")
                         {
@@ -901,6 +901,23 @@ namespace KlubPilkarski.Controllers
                     }
                     zawodnicyWyswietl.Add(zawodnikMecz.Zawodnik);
                 }
+                foreach(Zawodnik zawodnik in zawodnicy)
+                {
+                    Zawodnik zawodnikWyswietl = zawodnicyWyswietl.Find(z => z.IdK == zawodnik.IdK && pozycja.ContainsKey(zawodnik.IdZ) && pozycja[zawodnik.IdZ] == pozycja[z.IdZ] && oceny.ContainsKey(zawodnik.IdZ) && oceny[zawodnik.IdZ] > oceny[z.IdZ]);
+                    Boolean czyWyswietlic = true;
+                    foreach(Zawodnik zawodnikWys in zawodnicyWyswietl)
+                    {
+                        if (zawodnik.Equals(zawodnikWys))
+                        {
+                            czyWyswietlic = false;
+                        }
+                    }
+                    if (zawodnikWyswietl != null && czyWyswietlic)
+                    {
+                        zawodnicyWyswietl.Remove(zawodnikWyswietl);
+                        zawodnicyWyswietl.Add(zawodnik);
+                    }
+                }
             }
             ViewBag.IloscBr = iloscBrSklad;
             ViewBag.IloscLo = iloscLoSklad;
@@ -933,6 +950,7 @@ namespace KlubPilkarski.Controllers
             ViewBag.Oceny = oceny;
             ViewBag.Pozycja = pozycja;
             ViewBag.Klub = klub;
+            ViewBag.KlubPrzeciwnika = klubPrzeciwnika;
             return View(zawodnicyWyswietl);
         }
 
