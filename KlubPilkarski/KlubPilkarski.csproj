@@ -281,6 +281,7 @@
     <Content Include="Content\images\DataTable\sort_desc_disabled.png" />
     <Content Include="Content\images\herb_50.png" />
     <Content Include="Content\images\herb_200.png" />
+    <Content Include="Content\select2.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -449,6 +450,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\tooltip.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -548,6 +550,8 @@
     <Content Include="Views\Mecz\UpcomingMatch.cshtml" />
     <Content Include="Views\ZawodnikMecz\AllInMatch.cshtml" />
     <Content Include="Views\Mecz\AllInMatchweek.cshtml" />
+    <Content Include="Views\ZawodnikMecz\AllFromClub.cshtml" />
+    <Content Include="Views\ZawodnikMecz\DetailsSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

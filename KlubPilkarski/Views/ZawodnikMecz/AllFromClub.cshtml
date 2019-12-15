@@ -1,0 +1,80 @@
+﻿@model IEnumerable<KlubPilkarski.Models.Zawodnik>
+@{
+    Dictionary<int, double> oceny = ViewBag.Oceny;
+    Dictionary<int, String> pozycja = ViewBag.Pozycje;
+    ViewBag.Title = "Zawodnicy w klubie";
+}
+
+<h2>Zawodnicy w klubie</h2>
+
+<table id="table" class="table">
+    <thead>
+        <tr>
+            <th>
+                Zawodnik
+            </th>
+            <th>
+                Pozycja
+            </th>
+            <th>
+                Ocena
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                Zawodnik
+            </th>
+            <th>
+                Pozycja
+            </th>
+            <th>
+                Ocena
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imie) @Html.DisplayFor(modelItem => item.Nazwisko)
+                </td>
+                <td>
+                    @if (pozycja.ContainsKey(item.IdZ))
+                    {
+                        @pozycja[item.IdZ]
+                    }
+                    else
+                    {
+                        string tmp = "-";
+                        @tmp
+                    }
+                </td>
+                <td>
+                    @if (oceny.ContainsKey(item.IdZ))
+                    {
+                        @oceny[item.IdZ]
+                    }
+                    else
+                    {
+                        int o = 0;
+                        @o
+                    }
+                    / 10
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm"
+                            onclick="location.href='@Url.Action("DetailsSummary", "ZawodnikMecz", new { id = item.IdZ })'"
+                            data-toggle="tooltip" data-placement="top" title="Pokaż szczegółowe informacje">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

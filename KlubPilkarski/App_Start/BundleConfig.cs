@@ -30,6 +30,9 @@ namespace KlubPilkarski
                         "~/Scripts/moment-with-locales.min.js",
                         "~/Scripts/bootstrap-datetimepicker.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/select2").Include(
+                        "~/Scripts/select2.js"));
+
             // Użyj wersji deweloperskiej biblioteki Modernizr do nauki i opracowywania rozwiązań. Następnie, kiedy wszystko będzie
             // gotowe do produkcji, użyj narzędzia do kompilowania ze strony https://modernizr.com, aby wybrać wyłącznie potrzebne testy.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -44,7 +47,8 @@ namespace KlubPilkarski
                       "~/Content/site.css",
                       "~/Content/dataTables.bootstrap.css",
                       "~/Content/ZawodnikMeczForm.css",
-                      "~/Content/bootstrap-datetimepicker.min.css"));
+                      "~/Content/bootstrap-datetimepicker.min.css",
+                      "~/Content/select2.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                       "~/Content/themes/base/all.css"));

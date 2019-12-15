@@ -1,0 +1,1171 @@
+﻿@model IEnumerable<KlubPilkarski.Models.ZawodnikMecz>
+
+@{
+    ViewBag.Title = "Informacje o występach zawodnika";
+}
+
+<h2>Informacje o występach zawodnika</h2>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6 panel">
+            <p align="center">
+                <strong>Zawodnik</strong>
+            </p>
+
+            <p align="center">
+                @ViewBag.Imie @ViewBag.Nazwisko
+            </p>
+        </div>
+    </div>
+
+    @if (ViewBag.Pozycja == "BR")
+    {
+        <div class="row">
+            <div class="col-md-6 panel">
+                <p align="center">
+                    <strong>@Html.DisplayNameFor(model => model.Pozycja)</strong>
+                </p>
+
+                <p align="center">
+                    @ViewBag.Pozycja
+                </p>
+            </div>
+            <div class="col-md-6 panel">
+                <p align="center">
+                    <strong>Średnia straconych bramek</strong>
+                </p>
+
+                <p align="center">
+                    @{ 
+                        int suma = 0;
+                        int iloscWystepow = Model.Count();
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.StraconeBramki;
+                    }
+                    @{ 
+                        double srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia obron przez wyskok</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.ObronaWyskok;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia obron wewnątrz pola karnego</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.ObronaPoleKarne;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Bramkarz wystąpił w roli ostatniego obrońcy - średnia</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.ObronaWyjscie;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia piąstkowań</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Piastkowania;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia obron wysokiej piłki</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.ObronaWysokiejPilki;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia żółtych kartek</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.KartkiZolte;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia czerwonych kartek</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.KartkiCzerwone;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość podań celnych na własnej połowie</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.PodaniaUdanePolowaWlasna;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość podań celnych na połowie przeciwnika</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.PodaniaUdanePolowaPrzeciwnika;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia podań niecelnych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.PodaniaNieudane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość dośrodkowań</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Dosrodkowania;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość celnych długich podań</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.DlugiePodaniaUdane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość niecelnych długich podań</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.DlugiePodaniaNieudane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość kluczowych podań</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.KluczowePodania;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość kontaktów z piłką</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Kontakty;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 panel">
+                <p align="center">
+                    <strong>Średnia ilość wyrzutów z piłką</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Wyrzuty;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 panel">
+                <p align="center">
+                    <strong>Średnia ocen</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        double sumaOcen = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        sumaOcen += item.FormaView;
+                    }
+                    @{
+                        srednia = sumaOcen / iloscWystepow;
+                    }
+                    @srednia / 10
+                </p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-6 panel">
+                <p align="center">
+                    <strong>@Html.DisplayNameFor(model => model.Pozycja)</strong>
+                </p>
+
+                <p align="center">
+                    @ViewBag.Pozycja
+                </p>
+            </div>
+            <div class="col-md-6 panel">
+                <p align="center">
+                    <strong>Średnia ilość bramek</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        int suma = 0;
+                        int iloscWystepow = Model.Count();
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Bramki;
+                    }
+                    @{
+                        double srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość utworzonych szans</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.UtworzoneSzanse;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość strzałów celnych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.StrzalyCelne;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość strzałów niecelnych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.StrzalyNiecelne;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość strzałów zablokowanych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.StrzalyZablokowane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość słupków i poprzeczek</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.SlupkiPoprzeczki;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość kartkek żółtych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.KartkiZolte;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość kartkek żółtych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.KartkiZolte;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość podań celnych na własnej połowie</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.PodaniaUdanePolowaWlasna;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość podań celnych na połowie przeciwnika</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.PodaniaUdanePolowaPrzeciwnika;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość podań niecelnych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.PodaniaNieudane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość dośrodkowań</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Dosrodkowania;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość celnych długich podań</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.DlugiePodaniaUdane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość niecelnych długich podań</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.DlugiePodaniaNieudane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość kluczowych podań</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.KluczowePodania;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość kontaktów z piłką</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Kontakty;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość rzutów rożnych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.RzutyRozne;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość wyrzutów</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Wyrzuty;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość pojedynków wygranych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.PojedynkiWygrane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość pojedynków przegranych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.PojedynkiPrzegrane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość wybić</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Wybicia;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość dryblingów udanych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.DryblingiUdane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość strat</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Straty;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość fauli na zawodniku</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Faulowany;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość fauli zawodnika</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Faule;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość odbiorów udanych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.OdbioryUdane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość odbiorów nieudanych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.OdbioryNieudane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość główkek wygranych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.GlowkiWygrane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość główkek przegranych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.GlowkiPrzegrane;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość przejęć</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Przejecia;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość spalonych</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Spalone;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość odzyskanych piłkek</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.OdzyskanePilki;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość asyst</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.Asysty;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+            <div class="col-md-4 panel">
+                <p align="center">
+                    <strong>Średnia ilość straconych bramkek</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        suma = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        suma += (int)item.StraconeBramki;
+                    }
+                    @{
+                        srednia = suma / iloscWystepow;
+                    }
+                    @srednia
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 panel">
+                <p align="center">
+                    <strong>Średnia ocen</strong>
+                </p>
+
+                <p align="center">
+                    @{
+                        srednia = 0;
+                        double sumaOcen = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        sumaOcen += item.FormaView;
+                    }
+                    @{
+                        srednia = sumaOcen / iloscWystepow;
+                    }
+                    @srednia / 10
+                </p>
+            </div>
+        </div>
+    }
+</div>
+<p>
+    @Html.ActionLink("Powrót do listy zawodników", "AllFromClub", null, new { @class = "btn btn-primary" })
+</p>

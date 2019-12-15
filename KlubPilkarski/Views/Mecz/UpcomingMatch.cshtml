@@ -10,6 +10,14 @@
 
 <h2>Nadchodzący mecz</h2>
 
+@if (ViewBag.CzyPusty)
+{
+    <p align="center">
+        <h3>Brak odpowiednich danych do wyświetlenia przewidywanych składów</h3>
+    </p>
+}
+else
+{
 <div style="background: #118518; margin: 0 auto;">
     <div align="center" class="row" style="margin-left: 15%;">
         <div class="col-md-10" style="background: #118518; color: antiquewhite;">
@@ -2150,6 +2158,7 @@
     </div>
 </div>
 
+
 <br />
 
 <div class="row" style="margin-left: 15%;">
@@ -2201,3 +2210,4 @@
         </p>
     </div>
 </div>
+}

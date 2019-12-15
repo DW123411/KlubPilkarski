@@ -15,7 +15,7 @@ namespace KlubPilkarski.Controllers
         private BazaDanychEntities db = new BazaDanychEntities();
 
         // GET: Mecz
-        [Authorize(Roles = "PracownikKlubu")]
+        [Authorize(Roles = "PracownikKlubu,Trener")]
         public ActionResult Index()
         {
             var mecz = db.Mecz.Include(m => m.Klub).Include(m => m.Klub1).Include(m => m.Kolejka).Include(m => m.Sedzia).Include(m => m.Sezon).Include(m => m.Stadion);
@@ -69,7 +69,7 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Mecz/Details/5
-        [Authorize(Roles = "PracownikKlubu")]
+        [Authorize(Roles = "PracownikKlubu,Trener")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -919,6 +919,11 @@ namespace KlubPilkarski.Controllers
                     }
                 }
             }
+            bool czyPusty = false;
+            if (zawodnicyWyswietl.Count == 0)
+            {
+                czyPusty = true;
+            }
             ViewBag.IloscBr = iloscBrSklad;
             ViewBag.IloscLo = iloscLoSklad;
             ViewBag.IloscSo = iloscSoSklad;
@@ -951,6 +956,7 @@ namespace KlubPilkarski.Controllers
             ViewBag.Pozycja = pozycja;
             ViewBag.Klub = klub;
             ViewBag.KlubPrzeciwnika = klubPrzeciwnika;
+            ViewBag.CzyPusty = czyPusty;
             return View(zawodnicyWyswietl);
         }
 

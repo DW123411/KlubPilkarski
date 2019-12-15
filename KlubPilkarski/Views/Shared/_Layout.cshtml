@@ -47,6 +47,8 @@
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Nadchodzący mecz", "UpcomingMatch", "Mecz")</li>
                         <li>@Html.ActionLink("Mecze", "Index", "Mecz")</li>
+                        <li>@Html.ActionLink("Zawodnicy", "AllFromClub", "ZawodnikMecz")</li>
+                        <li>@Html.ActionLink("Tabela ligowa", "LatestLeagueTable", "Mecz")</li>
                     </ul>
                 }
                 @Html.Partial("_LoginPartial")
@@ -62,6 +64,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/select2")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/datatables")
     @RenderSection("scripts", required: false)

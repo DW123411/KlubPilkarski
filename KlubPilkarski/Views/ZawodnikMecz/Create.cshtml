@@ -10,7 +10,7 @@
 @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "zawodnikMeczForm" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         <div class="tab">
@@ -168,8 +168,8 @@
                     @Html.ValidationMessageFor(model => model.SlupkiPoprzeczki, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div> 
-        
+        </div>
+
         <div class="tab" id="br">
             <div class="form-group">
                 @Html.LabelFor(model => model.KartkiZolte, "Kartki żółte", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -450,6 +450,13 @@
                 $.each(response, function (index, item) {
                     zawodnicy.append($('<option></option>').text(item.Imie+" "+item.Nazwisko).val(item.IdZ));
                 });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#meczSelect").select2({
+                placeholder: "Wybierz..."
             });
         });
     </script>
