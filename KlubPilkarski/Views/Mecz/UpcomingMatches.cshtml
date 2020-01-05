@@ -18,6 +18,7 @@
             <th>
                 Stadion
             </th>
+            <th></th>
         </tr>
     </thead>
     <tfoot>
@@ -31,6 +32,7 @@
             <th>
                 Stadion
             </th>
+            <th></th>
         </tr>
     </tfoot>
     <tbody>
@@ -44,6 +46,13 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Stadion.Nazwa), @Html.DisplayFor(modelItem => item.Stadion.Miejscowosc)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm"
+                            onclick="location.href='@Url.Action("Details", "Mecz", new { id = item.IdM })'"
+                            data-toggle="tooltip" data-placement="top" title="Pokaż szczegółowe informacje">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </button>
                 </td>
             </tr>
         }

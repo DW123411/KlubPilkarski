@@ -69,7 +69,6 @@ namespace KlubPilkarski.Controllers
         }
 
         // GET: Mecz/Details/5
-        [Authorize(Roles = "PracownikKlubu,Trener")]
         public ActionResult Details(int? id)
         {
             if (id == null)

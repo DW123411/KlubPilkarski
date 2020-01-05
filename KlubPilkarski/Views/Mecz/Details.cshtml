@@ -104,6 +104,14 @@
     {
         @Html.ActionLink("Edytuj", "Edit", new { id = Model.IdM }, new { @class = "btn btn-warning edit-button" })
         @Html.ActionLink("Przelicz formę klubów", "CalculateClubsRating", new { id = Model.IdM }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Powrót do listy meczy", "Index", null, new { @class = "btn btn-primary" })
     }
-    @Html.ActionLink("Powrót do listy meczy", "Index", null, new { @class = "btn btn-primary" })
+    else if (System.Web.HttpContext.Current.User.IsInRole("Trener") && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Powrót do listy meczy", "Index", null, new { @class = "btn btn-primary" })
+    }
+    else
+    {
+        @Html.ActionLink("Powrót do listy meczy", "UpcomingMatches", null, new { @class = "btn btn-primary" })
+    }
 </p>
